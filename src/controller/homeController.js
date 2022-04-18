@@ -16,7 +16,14 @@ const postDeleteStatus = async (req, res) => {
 }
 
 const signin = (req, res) => {
-    return res.render('signin.ejs');
+    const [rows, fields] = await pool.execute('SELECT * FROM `User`');
+    if(fields.quyenhan == 1){
+        return res.render('controllPanel.ejs');
+    }
+    else{
+        return res.render('signin.ejs')
+    }
+    
 }
 
 module.exports = {
