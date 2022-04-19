@@ -21,7 +21,7 @@ const signin = async (req, res) => {
         return res.render('controllPanel.ejs');
     }
     else{
-        return res.render('signin.ejs')
+        return res.render('index.ejs')
     }     
 }
 
