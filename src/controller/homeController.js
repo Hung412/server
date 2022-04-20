@@ -19,10 +19,10 @@ const signin = async (req, res) => {
     const [rows, fields] = await pool.execute('SELECT * FROM `user`');
     res.render('signin.ejs');
     if(req.body.uname == "admin" && req.body.pass == "admin"){
-        return res.render('controllPanel.ejs');
+        return res.redirect('/controll-panel');
     }
     else{
-        return res.render('index.ejs')
+        alert("Again!")
     }     
 }
 
