@@ -16,8 +16,8 @@ const postDeleteStatus = async (req, res) => {
 }
 
 const signin = async (req, res) => {
-    await pool.execute('SELECT * FROM `user`');
-    if(req.body.uname == "admin"){
+    const [rows, fields] = await pool.execute('SELECT * FROM `user`');
+    if(req.body = rows){
         return res.render('controllPanel.ejs');
     }
     else{
