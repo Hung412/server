@@ -17,7 +17,7 @@ const postDeleteStatus = async (req, res) => {
 
 const signin = async (req, res) => {
     await pool.execute(`SELECT * FROM user WHERE username = ${req.body.uname}`);
-    return res.redirect('home');
+    return res.redirect('/home');
     // if(req.body.uname == rows[0].username){
     //     alert("OK!")
     // }
