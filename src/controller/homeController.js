@@ -20,7 +20,7 @@ const showSigninForm = async (req, res) => {
 const signin = async (req, res) => {
     await pool.execute(`SELECT * FROM user WHERE username = '${req.body.uname}'`)
         // return res.redirect('/home');
-        alert('OK')
+        alert('OK');
 }
 
 module.exports = {
