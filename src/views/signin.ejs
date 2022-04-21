@@ -7,7 +7,7 @@
     <title>Login</title>
   </head>
   <body>
-    <form action="" method="POST">
+    <form action="/sign-in" method="POST">
       <!-- <div class="imgcontainer">
         <img src="img_avatar2.png" alt="Avatar" class="avatar">
       </div> -->
@@ -27,16 +27,5 @@
         <span class="psw">Forgot <a href="#">password?</a></span>
       </div> -->
     </form>
-    <script type="text/javascript">
-      var url = "ahkiot.herokuapp.com"; 
-      var ws = new WebSocket("wss://" + url); 
-      ws.onopen = function () 
-      {
-        ws.send(JSON.stringify({
-          status: "Connected",
-          pathname: '/sign-in'
-        }));
-      };
-    </script>
   </body>
 </html>
