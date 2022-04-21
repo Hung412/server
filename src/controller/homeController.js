@@ -18,15 +18,8 @@ const showSigninForm = async (req, res) => {
     res.render('signin.ejs');
 }
 const signin = async (req, res) => {
-    await pool.execute(`SELECT * FROM user`)
-    for(let i=0; i < data.length; i++){
-        if(req.body.uname == "admin"){
-            return res.redirect('/home');
-        }
-        else{
-            return res.redirect('/sign-in');
-        }
-    }
+    await pool.execute(`SELECT * FROM user WHERE username = '${req.body.uname}' AND password = ${req.body.psw}`)
+    return res.redirect('/controll-panel')
 }
 
 module.exports = {
