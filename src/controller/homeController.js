@@ -16,8 +16,9 @@ const postDeleteStatus = async (req, res) => {
 }
 
 const signin = async (req, res) => {
+    res.render('signin.ejs');
     await pool.execute(`SELECT * FROM user WHERE username = ${req.body.uname} AND password = ${req.body.psw}`);
-    return res.render('signin.ejs');
+    return res.redirect('/home');
 }
 
 module.exports = {
