@@ -16,14 +16,8 @@ const postDeleteStatus = async (req, res) => {
 }
 
 const signin = async (req, res) => {
-    const [rows, fields] = await pool.execute(`SELECT * FROM user`);
-    res.render('signin.ejs');
-    if(req.body.uname == rows[0].username){
-        alert("OK!")
-    }
-    else{
-        alert("Again!")
-    }     
+    await pool.execute(`SELECT * FROM user WHERE username = ${req.body.uname} AND password = ${req.body.psw}`);
+    return res.render('signin.ejs');
 }
 
 module.exports = {
