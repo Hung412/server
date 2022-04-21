@@ -17,8 +17,13 @@ const postDeleteStatus = async (req, res) => {
 const showSigninForm = async (req, res) => {
     res.render('signin.ejs');
 }
-const signin = async (req, res) => {
-    await pool.execute(`SELECT * FROM user WHERE username = '${req.body.uname}' AND password = '${req.body.psw}'`)
+const signin = async (req, result) => {
+    await pool.execute(`SELECT * FROM user WHERE username = '${req.body.uname}' AND password = '${req.body.psw}'`,(err, res) =>{
+        if (err) {
+            result(err, null);
+            return;
+        }
+    })
     return res.redirect('/controll-panel')
 }
 
