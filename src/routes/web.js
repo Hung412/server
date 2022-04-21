@@ -6,9 +6,9 @@ let router = express.Router();
 const initWebRouter = (app) => {
     router.get('/', homeController.getHomePage);
     router.get('/home', homeController.getHomePage);
-    router.get('/controll-panel', homeController.signin);
+    router.get('/controll-panel', homeController.getControllPanelPage);
     router.post('/delete-status', homeController.postDeleteStatus);
-    router.get('/sign-in', homeController.signin);
+    router.get('/sign-in', homeController.showSigninForm);
     return app.use('/', router);
 }
 export default initWebRouter;

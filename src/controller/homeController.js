@@ -14,9 +14,10 @@ const postDeleteStatus = async (req, res) => {
     await pool.execute(`DELETE FROM trangthai WHERE id = ${req.body.statusId}`)
     return res.redirect('/home');
 }
-
+const showSigninForm = async (req, res) => {
+    return res.render('signin.ejs');
+}
 const signin = async (req, res) => {
-    res.render('signin.ejs');
     await pool.execute(`SELECT * FROM user WHERE username = ${req.body.uname} AND password = ${req.body.psw}`)
     return res.redirect('/home')
 }
@@ -25,5 +26,6 @@ module.exports = {
     getHomePage,
     getControllPanelPage,
     postDeleteStatus,
+    showSigninForm,
     signin
 }
