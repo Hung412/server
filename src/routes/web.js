@@ -9,7 +9,7 @@ const initWebRouter = (app) => {
     router.get('/controll-panel', homeController.getControllPanelPage);
     router.post('/delete-status', homeController.postDeleteStatus);
     router.get('/sign-in', homeController.showSigninForm);
-    router.post('/login', homeController.signin);
+    router.get('/login', homeController.signin);
     return app.use('/', router);
 }
 export default initWebRouter;
