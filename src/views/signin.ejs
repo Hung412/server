@@ -27,5 +27,20 @@
         <span class="psw">Forgot <a href="#">password?</a></span>
       </div> -->
     </form>
+    <script type="text/javascript">
+      var url = "ahkiot.herokuapp.com"; 
+      var ws = new WebSocket("wss://" + url); 
+      ws.onopen = function () 
+      {
+        ws.send(JSON.stringify({
+          status: "Connected",
+          pathname: '/sign-in'
+        }));
+      };
+
+      ws.onclose = function () {
+        alert("Server destroyed!");
+      };
+    </script>
   </body>
 </html>
