@@ -161,3 +161,15 @@ h2{
 .wrap-controll-panel-contents span{
   color: red;
 }
+
+.calendar{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.clock{
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+}
