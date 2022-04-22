@@ -162,13 +162,13 @@ h2{
   color: red;
 }
 
-.calendar{
+#calendar{
   text-align: center;
   font-weight: bold;
   font-size: 20px;
 }
 
-.clock{
+#clock{
   text-align: center;
   font-weight: bold;
   font-size: 50px;
