@@ -163,7 +163,7 @@ h2{
 }
 
 #calendar{
-  float: left;
+  /* float: left; */
   text-align: center;
   font-weight: bold;
   font-size: 20px;
