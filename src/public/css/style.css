@@ -163,12 +163,12 @@ h2{
   color: red;
 }
 
-#calendar{
+/* #calendar{ */
   /* float: left; */
-  text-align: center;
+  /* text-align: center;
   font-weight: bold;
   font-size: 20px;
-}
+} */
 
 #clock{
   float: left;
