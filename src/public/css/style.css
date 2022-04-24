@@ -183,7 +183,20 @@ h2{
 #m{
   color: #85C1E9;
   padding: 30px;
-  margin: 0 10px 0 10px
+  margin: 0 10px 0 10px;
+  font-size: 20px;
+}
+#h{
+  color: #85C1E9;
+  padding: 30px;
+  margin: 0 10px 0 10px;
+  font-size: 20px;
+}
+#s{
+  color: #85C1E9;
+  padding: 30px;
+  margin: 0 10px 0 10px;
+  font-size: 20px;
 }
 .clock {
   font-family: 'Roboto', sans-serif;
