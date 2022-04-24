@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <script src='/js/clock.js'></script>
     <!-- <link href='/css/main.css' rel='stylesheet' />
     <script src='/js/main.js'></script> -->
     <!-- <script>
@@ -82,51 +84,37 @@
         
       </div>
 
-      <!-- Clock -->
-
-      <div id = "clock" onload="currentTime()"></div>
-      <script>
-        function currentTime() {
-          let date = new Date(); 
-          let hh = date.getHours();
-          let mm = date.getMinutes();
-          let ss = date.getSeconds();
-          let session = "AM";
-
-          if(hh === 0){
-              hh = 12;
-          }
-          if(hh > 12){
-              hh = hh - 12;
-              session = "PM";
-          }
-
-          hh = (hh < 10) ? "0" + hh : hh;
-          mm = (mm < 10) ? "0" + mm : mm;
-          ss = (ss < 10) ? "0" + ss : ss;
-            
-          let time = hh + ":" + mm + ":" + ss + " " + session;
-
-          document.getElementById("clock").innerText = time; 
-          let t = setTimeout(function(){ currentTime() }, 1000);
-        }
-
-        currentTime();
-      </script>
-
-      <!-- set Calendar -->
-
-      <!-- <div ></div> -->
-      <div id="calendar">
-        <label for="date">Choose a date</label>
-        <input type="date" id="date">
-        <br><br>
-        <label for="time">Choose a time</label>
-        <input type="time" id="time" required>
-        <br>
-        <button type="submit">Confirm</button>
+      
+      <div class="clock_calendar">
+        <!-- Clock -->
+        <div class="clock">
+          <div class="bg">
+              <h2 id="h">12</h2>
+          </div>
+          <h2>:</h2>
+          <div class="bg">
+              <h2 id="m">20</h2>
+          </div>
+          <h2>:</h2>
+          <div class="bg">
+              <h2 id="s">00</h2>
+          </div>
+          <div class="bg">
+              <h2 id="ap">AM</h2>
+          </div>
       </div>
-    </div>
+
+        <!-- set Calendar -->
+        <div id="calendar">
+          <label for="date">Choose a date</label>
+          <input type="date" id="date">
+          <br><br>
+          <label for="time">Choose a time</label>
+          <input type="time" id="time" required>
+          <br>
+          <button type="submit">Confirm</button>
+        </div>
+      </div>
 
     <script type="text/javascript">
       var autoMode = document.getElementById("autoMode");
