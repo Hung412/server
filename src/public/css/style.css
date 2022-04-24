@@ -174,7 +174,7 @@ h2{
   font-size: 20px;
 } */
 
-.clock_calendar{
+#clock_calendar{
   float: left;
   text-align: center;
   font-weight: bold;
