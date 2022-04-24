@@ -180,42 +180,37 @@ h2{
   /* font-size: 70px; */
 }
 #m{
-  color: #85C1E9;
+  color: green;
   padding: 30px;
   margin: 0 10px 0 10px;
   font-size: 70px;
   font-weight: bold;
 }
 #h{
-  color: #85C1E9;
+  color: green;
   padding: 30px;
   margin: 0 10px 0 10px;
   font-size: 70px;
   font-weight: bold;
 }
 #s{
-  color: #85C1E9;
+  color: green;
   padding: 30px;
   margin: 0 10px 0 10px;
   font-size: 70px;
   font-weight: bold;
 }
 #ap{
-  color: #85C1E9;
+  color: green;
   padding: 30px;
   margin: 0 10px 0 10px;
   font-size: 30px;
   font-weight: bold;
 }
-.calendar{
-  text-align: center;
-  font-weight: bold;
-  font-size: 20px;
-  margin-bottom: 15px;
-} 
 .clock {
   /* margin-left: 500px; */
   margin-top: 150px;
+  margin-bottom: 50px;
   font-family: 'Roboto', sans-serif;
   background: #ebf5fc;  
   color: #000;
@@ -256,3 +251,9 @@ h2{
   border-radius: 50%;
   box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.2)
 }
+.calendar{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 15px;
+} 
