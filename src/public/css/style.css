@@ -174,16 +174,13 @@ h2{
   font-size: 20px;
 } */
 
-.clock_calendar{
+/* .clock_calendar{
   float: left;
   text-align: center;
   font-weight: bold;
   font-size: 70px;
-}
-/* #m{
-  
 } */
-.inside_clock{
+#m{
   color: #85C1E9;
   padding: 30px;
   margin: 0 10px 0 10px
