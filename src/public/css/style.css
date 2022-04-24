@@ -206,7 +206,8 @@ h2{
   font-size: 20px;
 } 
 .clock {
-  margin-left: 50px ;
+  margin-left: 150px;
+  margin-top: 150px;
   font-family: 'Roboto', sans-serif;
   background: #ebf5fc;  
   color: #000;
