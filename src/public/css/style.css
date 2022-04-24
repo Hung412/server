@@ -174,12 +174,12 @@ h2{
   font-size: 20px;
 } */
 
-/* .clock_calendar{
+.clock_calendar{
   float: left;
   text-align: center;
   font-weight: bold;
-  font-size: 70px;
-} */
+  /* font-size: 70px; */
+}
 #m{
   color: #85C1E9;
   padding: 30px;
@@ -213,8 +213,8 @@ h2{
   background: #ebf5fc;  
   color: #000;
   font-size: 50px;
-  /* text-align: center; */
-  float: left;
+  text-align: center;
+  /* float: left; */
   position: absolute;
   top: 50%;
   left: 50%;
