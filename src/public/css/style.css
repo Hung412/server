@@ -138,7 +138,7 @@ hr {
 .wrap-controll-panel {
   float: right;
   margin: 10px auto;
-  width: 50%;
+  width: 40%;
   height: 500px;
   border-radius: 20px;
   border: 3px solid green;
@@ -167,7 +167,7 @@ h2{
 
 .clock_calendar{
   margin: 10px auto;
-  width: 50%;
+  width: 40%;
   height: 500px;
   border-radius: 20px;
   border: 3px solid green;
