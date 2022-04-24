@@ -166,6 +166,7 @@ h2{
 }
 
 .clock_calendar{
+  width: 50%;
   float: left;
   text-align: center;
   font-weight: bold;
