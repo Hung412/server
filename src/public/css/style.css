@@ -169,6 +169,7 @@ h2{
   float: left;
   text-align: center;
   font-weight: bold;
+  border: #04aa6d solid 2px;
   /* font-size: 70px; */
 }
 #m{
