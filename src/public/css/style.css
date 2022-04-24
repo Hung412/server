@@ -174,26 +174,27 @@ h2{
   font-size: 20px;
 } */
 
-#clock{
+/* #clock{
   float: left;
   text-align: center;
   font-weight: bold;
   font-size: 70px;
-}
-#m{
-  margin: 0 10px 0 10px
-}
+} */
+/* #m{
+  
+} */
 .inside_clock{
   color: #85C1E9;
   padding: 30px;
-  font-size: 30px
+  margin: 0 10px 0 10px
 }
 .clock {
   font-family: 'Roboto', sans-serif;
   background: #ebf5fc;  
   color: #000;
   font-size: 50px;
-  text-align: center;
+  /* text-align: center; */
+  float: left;
   position: absolute;
   top: 50%;
   left: 50%;
