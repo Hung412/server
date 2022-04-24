@@ -165,16 +165,7 @@ h2{
   color: red;
 }
 
-
-
-/* #calendar{ */
-  /* float: left; */
-  /* text-align: center;
-  font-weight: bold;
-  font-size: 20px;
-} */
-
-#clock_calendar{
+.clock_calendar{
   float: left;
   text-align: center;
   font-weight: bold;
@@ -208,6 +199,12 @@ h2{
   font-size: 30px;
   font-weight: bold;
 }
+.calendar{
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+} 
 .clock {
   font-family: 'Roboto', sans-serif;
   background: #ebf5fc;  
