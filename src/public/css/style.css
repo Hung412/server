@@ -166,11 +166,15 @@ h2{
 }
 
 .clock_calendar{
+  margin: 10px auto;
   width: 50%;
+  height: 500px;
+  border-radius: 20px;
+  border: 3px solid green;
+  position: relative;
   float: left;
   text-align: center;
   font-weight: bold;
-  border: #04aa6d solid 2px;
   /* font-size: 70px; */
 }
 #m{
@@ -205,6 +209,7 @@ h2{
   text-align: center;
   font-weight: bold;
   font-size: 20px;
+  margin-bottom: 15px;
 } 
 .clock {
   margin-left: 500px;
