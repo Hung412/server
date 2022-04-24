@@ -185,18 +185,28 @@ h2{
   padding: 30px;
   margin: 0 10px 0 10px;
   font-size: 70px;
+  font-weight: bold;
 }
 #h{
   color: #85C1E9;
   padding: 30px;
   margin: 0 10px 0 10px;
   font-size: 70px;
+  font-weight: bold;
 }
 #s{
   color: #85C1E9;
   padding: 30px;
   margin: 0 10px 0 10px;
-  font-size: 7px;
+  font-size: 70px;
+  font-weight: bold;
+}
+#ap{
+  color: #85C1E9;
+  padding: 30px;
+  margin: 0 10px 0 10px;
+  font-size: 30px;
+  font-weight: bold;
 }
 .clock {
   font-family: 'Roboto', sans-serif;
