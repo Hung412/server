@@ -181,6 +181,8 @@ h2{
   font-size: 70px;
 }
 .clock {
+  font-family: 'Roboto', sans-serif;
+  background: #ebf5fc;  
   color: #000;
   font-size: 56px;
   text-align: center;
