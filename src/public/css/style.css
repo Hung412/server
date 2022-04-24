@@ -185,7 +185,8 @@ h2{
 }
 .inside_clock{
   color: #85C1E9;
-  padding: 30px
+  padding: 30px;
+  font-size: 30px
 }
 .clock {
   font-family: 'Roboto', sans-serif;
