@@ -108,7 +108,6 @@ ws.on('connection', function (socket, req, res) {
 
     });
 });
-require('.src/routes/auth.js')(app);
 
 server.listen(PORT, console.log(`Server listening on http://localhost:${PORT}`));
 
