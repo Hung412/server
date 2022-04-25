@@ -32,7 +32,7 @@ const showSigninForm = async (req, res) => {
 const signin = async (req, res) => {
     const [rows, fields]  = await pool.execute(`SELECT * FROM user`)
     // console.log({data: rows});
-    for(var i=0; i<rows.length; i++){
+    for(var i=0; i<=rows.length; i++){
         if(req.body.username == rows[i].username && req.body.password == rows[i].password){
             var sess = req.session;  //initialize session variable
             sess.daDangNhap = true;
