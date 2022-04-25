@@ -24,8 +24,8 @@ const signin = async (req, res) => {
         if(req.body.username == rows[i].username && req.body.password == rows[i].password){
             return res.redirect('/controll-panel');
         }else{
-            alert("Please try again!")
-            return res.redirect('/sign-in')
+            alert("Please try again!");
+            return res.redirect('/sign-in');
         }
     }
 }
