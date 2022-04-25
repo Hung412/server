@@ -29,7 +29,7 @@ const signin = async (req, res) => {
         if(req.body.username == rows[i].username && req.body.password == rows[i].password){
             var sess = req.session;  //initialize session variable
             sess.daDangNhap = true;
-            sess.username = user.username; 
+            sess.username = req.body.username; 
             return res.redirect('/controll-panel');
         }else{
             return res.redirect('/sign-in');
