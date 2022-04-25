@@ -3,6 +3,7 @@ import pool from '../configs/connectDB';
 const getHomePage = async (req, res) => {
     const [rows, fields] = await pool.execute('SELECT * FROM `trangthai`');
     if (req.session.daDangNhap) {
+        console.log(sess.username);
         return res.render('index.ejs', { data: rows });
     }
     else {       
@@ -11,7 +12,13 @@ const getHomePage = async (req, res) => {
 }
 
 const getControllPanelPage = (req, res) => {
-    return res.render('controllPanel.ejs');
+    if (req.session.daDangNhap){
+        console.log(sess.username);
+        return res.render('controllPanel.ejs');
+    }
+    else {       
+        res.redirect("/sign-in");
+    }
 }
 
 const postDeleteStatus = async (req, res) => {
