@@ -3,8 +3,14 @@ import express from 'express';
 import WebSocket from 'ws';
 import configViewEngine from './configs/viewEngine';
 import initWebRouter from './routes/web';
+var session = require('express-session');
 
-
+app.use(session({
+    secret: 'abcdefg',
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 }
+  }));
 // Setup .env
 require('dotenv').config();
 const PORT = process.env.PORT || 3000

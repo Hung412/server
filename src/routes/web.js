@@ -1,9 +1,15 @@
 import express from "express";
 import homeController from '../controller/homeController';
+const session = require('express-session');
 
 let router = express.Router();
 
 const initWebRouter = (app) => {
+    app.use(session({
+        resave: true, 
+        saveUninitialized: true, 
+        secret: 'somesecret', 
+        cookie: { maxAge: 60000 }}));
     router.get('/', homeController.getHomePage);
     router.get('/home', homeController.getHomePage);
     router.get('/controll-panel', homeController.getControllPanelPage);
