@@ -1,6 +1,5 @@
 import express from "express";
 import homeController from '../controller/homeController';
-var storage = require('node-persist');
 
 let router = express.Router();
 

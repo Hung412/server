@@ -4,7 +4,6 @@ import WebSocket from 'ws';
 import configViewEngine from './configs/viewEngine';
 import initWebRouter from './routes/web';
 const session = require('express-session');
-var storage = require('node-persist');
 
 
 // Setup .env
