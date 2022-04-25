@@ -3,6 +3,8 @@ import express from 'express';
 import WebSocket from 'ws';
 import configViewEngine from './configs/viewEngine';
 import initWebRouter from './routes/web';
+const session = require('express-session');
+var storage = require('node-persist');
 
 
 // Setup .env
@@ -18,6 +20,12 @@ const ws = new WebSocket.Server({
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: false,
+}));
 
 // Setup view engine
 configViewEngine(app);
@@ -101,6 +109,8 @@ ws.on('connection', function (socket, req, res) {
 
     });
 });
+require('.src/routes/auth.js')(app);
+
 server.listen(PORT, console.log(`Server listening on http://localhost:${PORT}`));
 
 
