@@ -10,24 +10,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <script src='/js/clock.js'></script>
-    <!-- <link href='/css/main.css' rel='stylesheet' />
-    <script src='/js/main.js'></script> -->
-    <!-- <script>
-
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'resourceTimelineWeek'
-        });
-        calendar.render();
-      });
-
-    </script> -->
     <meta charset="utf-8" />
   </head>
 
   <body>
     <div class="w3-navbar">
+      <div class="clock">
+        <div class="bg">
+            <h2 id="h">12</h2>
+        </div>
+        <h2>:</h2>
+        <div class="bg">
+            <h2 id="m">20</h2>
+        </div>
+        <h2>:</h2>
+        <div class="bg">
+            <h2 id="s">00</h2>
+        </div>
+        <div class="bg">
+            <h2 id="ap">AM</h2>
+        </div>
+      </div>
       <a href="/home"><i class="fa fa-fw fa-home"></i>Home</a></a>
       <a class="active" href="/controll-panel"><i class="fa fa-fw fa-wrench"></i>Controll panel</a>
       <a href="/sign-in"><i class="fa fa-fw fa-bar-chart"></i>Sign in</a>
@@ -87,23 +90,6 @@
       
       <div class="clock_calendar">
         <!-- Clock -->
-        <div class="clock">
-          <div class="bg">
-              <h2 id="h">12</h2>
-          </div>
-          <h2>:</h2>
-          <div class="bg">
-              <h2 id="m">20</h2>
-          </div>
-          <h2>:</h2>
-          <div class="bg">
-              <h2 id="s">00</h2>
-          </div>
-          <div class="bg">
-              <h2 id="ap">AM</h2>
-          </div>
-        </div>
-
         <!-- set Calendar -->
         <div class="calendar">
           <label for="date">Choose a date</label>
