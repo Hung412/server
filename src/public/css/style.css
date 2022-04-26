@@ -221,7 +221,7 @@ h2{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* display: flex; */
+  display: flex;
   align-items: center;
   /* justify-content: center; */
   /* padding: 0 20px */
