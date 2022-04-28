@@ -179,36 +179,36 @@ h2{
   position: relative;
   float: right;
   text-align: center;
-  font-weight: bold;
+  /* font-weight: bold; */
   /* font-size: 70px; */
 }
 #m{
-  color: green;
+  color: white;
   padding: 30px;
   margin: 0 10px 0 10px;
   font-size: 50px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 #h{
   color: white;
   padding: 30px;
   margin: 0 10px 0 10px;
   font-size: 50px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 #s{
   color: white;
   padding: 30px;
   margin: 0 10px 0 10px;
   font-size: 50px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 #ap{
   color: white;
   padding: 30px;
   margin: 0 10px 0 10px;
   font-size: 10px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 .clock {
   float: right;
