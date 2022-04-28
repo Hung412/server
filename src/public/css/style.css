@@ -18,7 +18,7 @@ body {
   text-align: center;
   color: white;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 31px;
   padding: 20px;
   padding-top: 20px;
   align-items: center;
@@ -142,7 +142,7 @@ hr {
   margin: 10px auto;
   margin-right: 15px;
   float: right;
-  width: 100%;
+  width: 90%;
   height: 500px;
   border-radius: 20px;
   border: 3px solid green;
@@ -211,13 +211,10 @@ h2{
   font-weight: bold;
 }
 .clock {
-  /* margin-left: 500px; */
   float: right;
   text-decoration: none;
-  /* margin-top: 40px; */
   font-family: 'Roboto', sans-serif;
-  background: #ebf5fc;  
-  color: #000;
+  color: white;
   font-size: 17px;
   text-align: center;
   padding: 12px;
@@ -228,8 +225,8 @@ h2{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
-  padding-right: 10px;
+  /* padding-top: 20px;
+  padding-right: 10px; */
 }
 .bg {
   display: flex;
