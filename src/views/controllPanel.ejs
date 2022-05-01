@@ -196,6 +196,11 @@
           ws.send("time");    
         } else {
           ws.send("Chua set date");
+          var day = getdate.getDate();
+          var month = getdate.getMonth();
+          var year = getdate.getFullYear();
+          ws.send(day + "/" + month + "/" + year);
+          ws.send("time");  
         } 
       };
       
