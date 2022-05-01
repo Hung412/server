@@ -188,11 +188,11 @@
         }
       };
       send.onclick = function () {       
-        // var day = getdate.getDate();
-        // var month = getdate.getMonth();
-        // var year = getdate.getFullYear();
-        // ws.send(day + "/" + month + "/" + year);
-        ws.send("time");    
+        var day = getdate.getDate();
+        var month = getdate.getMonth();
+        var year = getdate.getFullYear();
+        ws.send(day,month,year);
+        // ws.send("time");    
       };
       
     </script>
