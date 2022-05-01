@@ -178,7 +178,7 @@
       };
       faceRecognitionMode.onchange = function () {
         if (faceRecognitionMode.checked == true) {
-          ws.send("FACE_RECOGNITION_ON");
+          ws.send("FACE_RECOGNITION_BAT");
           manualMode.disabled = true;
           autoMode.disabled = true;
         } else {
