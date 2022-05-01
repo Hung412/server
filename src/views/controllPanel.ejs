@@ -192,7 +192,7 @@
         let day = ("0" + now.getDate()).slice(-2);
         let month = ("0" + (now.getMonth() + 1)).slice(-2);
         let today = (day)+"-"+(month)+"-"+ now.getFullYear();
-        res = $('#getdate').val(today);
+        res = getdate.val(today);
         ws.send(res);
         // ws.send("time");    
       };
