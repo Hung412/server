@@ -109,6 +109,7 @@
       var database = document.getElementById("database");
       var time = document.getElementById("time");
       var date = document.getElementById("date");
+      var time_submit = document.getElementById("time_submit");
 
       var url = "ahkiot.herokuapp.com"; // hàm trả về url của trang hiện tại kèm theo port
       var ws = new WebSocket("wss://" + url); // mở 1 websocket với port 3000
@@ -190,8 +191,7 @@
         var day = date.getDate();
         var month = date.getMonth();
         var year = date.getFullYear();
-        // ws.send(day + "/" + month + "/" + year);
-        ws.send("time");
+        ws.send(day + "/" + month + "/" + year);
       };
       
     </script>
