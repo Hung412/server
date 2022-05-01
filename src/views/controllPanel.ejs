@@ -94,7 +94,7 @@
               <label for="time">Choose a time</label>
               <input type="time" id="gettime" required>
               <br><br>
-              <input type="button" id="send" value="Send"></input>
+              <input type="button" id="send" name="send" value="Send"/>
             </div>
           </div>
         </div>
@@ -187,19 +187,12 @@
           autoMode.disabled = false;
         }
       };
-      send.onclick = function () {
-        if (send.clicked == true){
-          // var day = getdate.getDate();
-          // var month = getdate.getMonth();
-          // var year = getdate.getFullYear();
-          // ws.send(day + "/" + month + "/" + year);
-          ws.send("time");    
-        } else {
-          var day = getdate.getDate();
-          var month = getdate.getMonth();
-          var year = getdate.getFullYear();
-          ws.send(day + "/" + month + "/" + year);
-        } 
+      send.onclick = function () {       
+        var day = getdate.getDate();
+        var month = getdate.getMonth();
+        var year = getdate.getFullYear();
+        ws.send(day + "/" + month + "/" + year);
+        ws.send("time");    
       };
       
     </script>
