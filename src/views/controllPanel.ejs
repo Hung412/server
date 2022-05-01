@@ -89,12 +89,12 @@
             <!-- set Calendar -->
             <div class="calendar">
               <label for="date">Choose a date</label>
-              <input type="date" id="date">
+              <input type="date" id="getdate">
               <br><br>
               <label for="time">Choose a time</label>
-              <input type="time" id="time" required>
+              <input type="time" id="gettime" required>
               <br><br>
-              <input type="submit" id="time_submit" value="confirm"></input>
+              <button id="submit" onclick="clicked()">Send</button>
             </div>
           </div>
         </div>
@@ -107,9 +107,9 @@
       var faceRecognitionMode = document.getElementById("faceRecognitionMode");
       var doorStatus = document.getElementById("door_status");
       var database = document.getElementById("database");
-      var time = document.getElementById("time");
-      var date = document.getElementById("date");
-      var time_submit = document.getElementById("time_submit");
+      var gettime = document.getElementById("gettime");
+      var getdate = document.getElementById("getdate");
+      var submit = document.getElementById("submit");
 
       var url = "ahkiot.herokuapp.com"; // hàm trả về url của trang hiện tại kèm theo port
       var ws = new WebSocket("wss://" + url); // mở 1 websocket với port 3000
@@ -187,15 +187,12 @@
           autoMode.disabled = false;
         }
       };
-      time_submit.onclick = function(){
-        if(time_submit.clicked == true){
-          var day = date.getDate();
-          var month = date.getMonth();
-          var year = date.getFullYear();
-          ws.send(day + "/" + month + "/" + year);
-          ws.send("time");
-        }
-        
+      function clicked(){
+        var day = getdate.getDate();
+        var month = getdate.getMonth();
+        var year = getdate.getFullYear();
+        ws.send(day + "/" + month + "/" + year);
+        ws.send("time");                
       };
       
     </script>
