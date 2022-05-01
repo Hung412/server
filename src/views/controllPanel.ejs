@@ -94,7 +94,7 @@
               <label for="time">Choose a time</label>
               <input type="time" id="gettime" required>
               <br><br>
-              <button id="submit" onclick="clicked()">Send</button>
+              <input type="button" id="send" value="Send"></input>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@
       var database = document.getElementById("database");
       var gettime = document.getElementById("gettime");
       var getdate = document.getElementById("getdate");
-      var submit = document.getElementById("submit");
+      var send = document.getElementById("send");
 
       var url = "ahkiot.herokuapp.com"; // hàm trả về url của trang hiện tại kèm theo port
       var ws = new WebSocket("wss://" + url); // mở 1 websocket với port 3000
@@ -178,7 +178,7 @@
       };
       faceRecognitionMode.onchange = function () {
         if (faceRecognitionMode.checked == true) {
-          ws.send("FACE_RECOGNITION_BAT");
+          ws.send("FACE_RECOGNITION_ON");
           manualMode.disabled = true;
           autoMode.disabled = true;
         } else {
@@ -187,12 +187,16 @@
           autoMode.disabled = false;
         }
       };
-      function clicked(){
-        var day = getdate.getDate();
-        var month = getdate.getMonth();
-        var year = getdate.getFullYear();
-        ws.send(day + "/" + month + "/" + year);
-        ws.send("time");                
+      send.onclick = function () {
+        if (send.clicked == true){
+          var day = getdate.getDate();
+          var month = getdate.getMonth();
+          var year = getdate.getFullYear();
+          ws.send(day + "/" + month + "/" + year);
+          ws.send("time");    
+        } else {
+          ws.send("Chua set date");
+        } 
       };
       
     </script>
