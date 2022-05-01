@@ -187,11 +187,13 @@
           autoMode.disabled = false;
         }
       };
-      send.onclick = function () {       
-        var day = getdate[1];
-        var month = getdate.getMonth();
-        var year = getdate.getFullYear();
-        ws.send(day);
+      send.onclick = function () {   
+        let now = new Date();    
+        let day = ("0" + now.getDate()).slice(-2);
+        let month = ("0" + (now.getMonth() + 1)).slice(-2);
+        let today = (day)+"-"+(month)+"-"+ now.getFullYear();
+        res = $('#getdate').val(today);
+        ws.send(res);
         // ws.send("time");    
       };
       
