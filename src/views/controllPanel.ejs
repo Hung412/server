@@ -188,11 +188,11 @@
         }
       };
       send.onclick = function () {
-        if (send.clicked == false){
-          var day = getdate.getDate();
-          var month = getdate.getMonth();
-          var year = getdate.getFullYear();
-          ws.send(day + "/" + month + "/" + year);
+        if (send.clicked == true){
+          // var day = getdate.getDate();
+          // var month = getdate.getMonth();
+          // var year = getdate.getFullYear();
+          // ws.send(day + "/" + month + "/" + year);
           ws.send("time");    
         } else {
           ws.send("Chua set date");
