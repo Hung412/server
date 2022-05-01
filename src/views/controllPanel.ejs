@@ -188,7 +188,7 @@
         }
       };
       send.onclick = function () {       
-        var day = getdate.getDate().slice(-2);
+        var day = getdate[1];
         var month = getdate.getMonth();
         var year = getdate.getFullYear();
         ws.send(day);
