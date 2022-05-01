@@ -186,12 +186,12 @@
           autoMode.disabled = false;
         }
       };
-      time_submit.on('click', function(){
+      time_submit.onclick = function(){
         var day = date.getDate();
         var month = date.getMonth();
         var year = date.getFullYear();
         ws.send(day+"/"+month+"/"+year);
-      })
+      };
       
     </script>
   </body>
