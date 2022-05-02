@@ -151,6 +151,8 @@
           doorStatus.innerHTML = "Open error!";
         } else if (blobToString(e.data) == "close error") {
           doorStatus.innerHTML = "Close error!";
+        } else if (blobToString(e.data) == "VuTuanHung") {
+          doorStatus.innerHTML = "Hung";
         }
       };
 
