@@ -195,5 +195,24 @@
       };
       
     </script>
+    <script>
+      // Run on page load
+      window.onload = function() {
+   
+          // If sessionStorage is storing default values (ex. name), exit the function and do not restore data
+          if (sessionStorage.getItem('autoMode') == "autoMode") {
+              return;
+          }
+   
+          // If values are not blank, restore them to the fields
+          var autoMode = sessionStorage.getItem('autoMode');
+          if (autoMode !== true) $('#autoMode').val(autoMode);
+      }
+   
+      // Before refreshing the page, save the form data to sessionStorage
+      window.onbeforeunload = function() {
+          sessionStorage.setItem("autoMode", $('#autoMode').val());
+      }
+  </script>
   </body>
 </html>
