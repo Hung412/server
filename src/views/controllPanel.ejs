@@ -188,12 +188,12 @@
         }
       };
       send.onclick = function () {   
-        let now = new Date();    
-        let day = ("0" + now.getDate()).slice(-2);
-        let month = ("0" + (now.getMonth() + 1)).slice(-2);
-        let today = (day)+"-"+(month)+"-"+ now.getFullYear();
-        res = getdate.val(today);
-        ws.send(res);
+        // let now = new Date();    
+        // let day = ("0" + now.getDate()).slice(-2);
+        // let month = ("0" + (now.getMonth() + 1)).slice(-2);
+        // let today = (day)+"-"+(month)+"-"+ now.getFullYear();
+        // res = getdate.val(today);
+        ws.send(getdate.value);
         // ws.send("time");    
       };
       
