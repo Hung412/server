@@ -140,8 +140,8 @@ hr {
 
 .wrap-controll-panel {
   margin: 10px auto;
-  margin-right: 15px;
-  float: right;
+  /* margin-right: 15px; */
+  /* float: right; */
   width: 90%;
   height: 500px;
   border-radius: 20px;
