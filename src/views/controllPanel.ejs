@@ -88,11 +88,12 @@
             <!-- Clock -->
             <!-- set Calendar -->
             <div class="calendar">
-              <label for="date">Choose a date</label>
+              <label for="date">Set date</label>
               <input type="date" id="getdate">
               <br><br>
-              <label for="time">Choose a time</label>
-              <input type="time" id="gettime" required>
+              <label for="time">Set time</label>
+              <input type="time" id="gettimeopen" required>
+              <input type="time" id="gettimeclose" required>
               <br><br>
               <input type="button" id="send" name="send" value="Set time"/>
             </div>
@@ -107,7 +108,8 @@
       var faceRecognitionMode = document.getElementById("faceRecognitionMode");
       var doorStatus = document.getElementById("door_status");
       var database = document.getElementById("database");
-      var gettime = document.getElementById("gettime");
+      var gettime = document.getElementById("gettimeopen");
+      var gettime = document.getElementById("gettimeclose");
       var getdate = document.getElementById("getdate");
       var send = document.getElementById("send");
 
@@ -191,7 +193,8 @@
       };
       send.onclick = function () {   
         ws.send(getdate.value);  
-        ws.send(gettime.value);
+        ws.send(gettimeopen.value);
+        ws.send(gettimeclose.value);
       };
 
       window.onbeforeunload = function() {
