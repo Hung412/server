@@ -39,7 +39,6 @@ const signin = async (req, res) => {
             sess.username = req.body.username; 
             return res.redirect('/controll-panel');
         }else{
-            alert("Please try again");
             return res.redirect('/sign-in'); 
         }
     }
