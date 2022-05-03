@@ -195,9 +195,9 @@
       };
       
       window.onbeforeunload = function() {
-        localStorage.setItem("manualMode", manualMode.val());
-        localStorage.setItem("autoMode", autoMode.val());
-        localStorage.setItem("faceRecognitionMode", faceRecognitionMode.val());
+        localStorage.setItem("manualMode", manualMode.value);
+        localStorage.setItem("autoMode", autoMode.value);
+        localStorage.setItem("faceRecognitionMode", faceRecognitionMode.value);
       }
 
     </script>
