@@ -171,16 +171,8 @@ h2{
 
 .clock_calendar{
   margin: 10px auto;
-  margin-left: 15px;
-  width: 20%;
-  /* height: 500px; */
-  /* border-radius: 20px; */
-  /* border: 3px solid green; */
   position: relative;
-  float: right;
   text-align: center;
-  /* font-weight: bold; */
-  /* font-size: 70px; */
 }
 #m{
   color: white;
