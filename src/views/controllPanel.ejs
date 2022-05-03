@@ -39,51 +39,50 @@
       <div class="wrap-controll-panel">
         <div class="wrap-controll-panel-contents">
           <h2>CONTROL PANEL</h2>
-          
-          <div>
-            <label class="switch">
-              <input
-                type="checkbox"
-                id="manualMode"
-                name="manualMode"
-                disabled="true"
-              />
-              <span class="slider"></span>
-            </label>
-            <label>MANUAL MODE</label>
+          <div class="button_mode">
+            <div>
+              <label class="switch">
+                <input
+                  type="checkbox"
+                  id="manualMode"
+                  name="manualMode"
+                  disabled="true"
+                />
+                <span class="slider"></span>
+              </label>
+              <label>MANUAL MODE</label>
+            </div>
+            <br>
+            <div>
+              <label class="switch">
+                <input
+                  type="checkbox"
+                  id="autoMode"
+                  name="autoMode"
+                  disabled="true"
+                />
+                <span class="slider"></span>
+              </label>
+              <label for="">AUTO MODE</label>
+            </div>
+            <br>
+            <div>
+              <label class="switch">
+                <input
+                  type="checkbox"
+                  id="faceRecognitionMode"
+                  name="faceRecognitionMode"
+                />
+                <span class="slider"></span>
+              </label>
+              <label for="">FACE RECOGNITION MODE</label>
+            </div>
+            <br>
+            <div class="content-door-status">
+              <label for="">Door status:</label>
+              <span id="door_status">Closed!</span>
+            </div>
           </div>
-          <br>
-          <div>
-            <label class="switch">
-              <input
-                type="checkbox"
-                id="autoMode"
-                name="autoMode"
-                disabled="true"
-              />
-              <span class="slider"></span>
-            </label>
-            <label for="">AUTO MODE</label>
-          </div>
-          <br>
-          <div>
-            <label class="switch">
-              <input
-                type="checkbox"
-                id="faceRecognitionMode"
-                name="faceRecognitionMode"
-              />
-              <span class="slider"></span>
-            </label>
-            <label for="">FACE RECOGNITION MODE</label>
-          </div>
-          <br>
-          <div class="content-door-status">
-            <label for="">Door status:</label>
-            <span id="door_status">Closed!</span>
-          </div>
-          
-
           <div class="clock_calendar">
             <!-- Clock -->
             <!-- set Calendar -->
@@ -192,9 +191,9 @@
         }
       };
       send.onclick = function () {   
-        ws.send("date" + getdate.value);  
-        ws.send("open" + gettimeopen.value);
-        ws.send("close" + gettimeclose.value);
+        ws.send("date: " + getdate.value);  
+        ws.send("open: " + gettimeopen.value);
+        ws.send("close: " + gettimeclose.value);
       };
 
       window.onbeforeunload = function() {

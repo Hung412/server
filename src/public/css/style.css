@@ -168,11 +168,14 @@ h2{
 .wrap-controll-panel-contents span{
   color: red;
 }
-
+.button_mode{
+  float: left;
+}
 .clock_calendar{
   margin: 10px auto;
   position: relative;
   text-align: center;
+  float: right;
 }
 #m{
   color: white;
