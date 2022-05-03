@@ -170,11 +170,12 @@ h2{
 }
 .button_mode{
   float: left;
+  margin: 10px auto;
+  position: relative;
 }
 .clock_calendar{
   margin: 10px auto;
   position: relative;
-  text-align: center;
   float: right;
 }
 #m{
