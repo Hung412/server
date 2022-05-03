@@ -9,13 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   
     <title>Home</title>
   </head>
   <body>
-    <div class="container">
-      <canvas id="myChart"></canvas>
-  </div>
     <div class="w3-navbar">
       <a class="active" href="/home"><i class="fa fa-fw fa-home"></i>Home</a></a>
       <a href="/controll-panel"><i class="fa fa-fw fa-wrench"></i>Controll panel</a>
@@ -23,6 +19,9 @@
     </div>
     <div class="w3-container">
       <h2>Status table</h2>
+      <div class="container">
+        <canvas id="myChart"></canvas>
+      </div>
       <div>
         <table class="w3-table-all w3-hoverable">
           <thead>
@@ -85,10 +84,9 @@
           datasets:[{
             label:'Population',
             data:[
-              // data[i].status,
+              data[i].status = "open",
               120,
               120,
-              80,
             ],
             //backgroundColor:'green',
             backgroundColor:[
@@ -109,7 +107,7 @@
         options:{
           title:{
             display:true,
-            text:'Largest Cities In Massachusetts',
+            text:'Status Chart',
             fontSize:25
           },
           legend:{
