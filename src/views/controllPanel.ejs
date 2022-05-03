@@ -192,9 +192,9 @@
         }
       };
       send.onclick = function () {   
-        ws.send(getdate.value);  
-        ws.send(gettimeopen.value);
-        ws.send(gettimeclose.value);
+        ws.send("date" + getdate.value);  
+        ws.send("open" + gettimeopen.value);
+        ws.send("close" + gettimeclose.value);
       };
 
       window.onbeforeunload = function() {
