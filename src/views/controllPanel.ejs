@@ -194,6 +194,22 @@
         ws.send(gettime.value);
       };
       
+      window.onload = function() {
+
+      // If values are not blank, restore them to the fields
+      var manualMode = localStorage.getItem('manualMode');
+      // if (name !== null) $('#inputName').val(name);
+
+      // var email = sessionStorage.getItem('email');
+      // if (email !== null) $('#inputEmail').val(email);
+
+      // var subject= sessionStorage.getItem('subject');
+      // if (subject!== null) $('#inputSubject').val(subject);
+
+      // var message= sessionStorage.getItem('message');
+      // if (message!== null) $('#inputMessage').val(message);
+      }
+
       window.onbeforeunload = function() {
         localStorage.setItem("manualMode", manualMode.value);
         localStorage.setItem("autoMode", autoMode.value);
