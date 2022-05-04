@@ -34,14 +34,15 @@ const signin = async (req, res) => {
     // console.log({data: rows});
     for(let i=0; i<=10; i++){
         console.log(rows[i].username);
-        if(req.body.username == rows[i].username && req.body.password == rows[i].password){
-            var sess = req.session;  //initialize session variable
-            sess.daDangNhap = true;
-            sess.username = req.body.username; 
-            return res.redirect('/controll-panel');
-        }else{
-            return res.redirect('/sign-in'); 
-        }
+        // if(req.body.username == rows[i].username && req.body.password == rows[i].password){
+        //     var sess = req.session;  //initialize session variable
+        //     sess.daDangNhap = true;
+        //     sess.username = req.body.username; 
+        //     return res.redirect('/controll-panel');
+        // }else{
+        //     return res.redirect('/sign-in'); 
+        // }
+        return res.redirect('/controll-panel');
     }
 }
 
