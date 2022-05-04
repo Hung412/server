@@ -42,7 +42,7 @@ const signin = async (req, res) => {
         // }else{
         //     return res.redirect('/sign-in'); 
         // }
-        return res.redirect('/controll-panel');
+        //return res.redirect('/controll-panel');
     }
 }
 
