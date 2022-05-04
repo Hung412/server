@@ -34,6 +34,7 @@ const signin = async (req, res) => {
     // console.log({data: rows});
     for(let i=0; i<=10; i++){
         if(req.body.username == rows[i].username && req.body.password == rows[i].password){
+            console.log(rows[i].username);
             var sess = req.session;  //initialize session variable
             sess.daDangNhap = true;
             sess.username = req.body.username; 
