@@ -194,9 +194,9 @@
         }
       };
       send.onclick = function () {   
-        ws.send("date: " + getdate.value);  
-        ws.send("open: " + gettimeopen.value);
-        ws.send("close: " + gettimeclose.value);
+        ws.send("date: " + str(getdate.value));  
+        ws.send("open: " + str(gettimeopen.value));
+        ws.send("close: " + str(gettimeclose.value));
       };
 
       window.onbeforeunload = function() {
