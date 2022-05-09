@@ -194,7 +194,7 @@
         }
       };
       send.onclick = function () {   
-        ws.send("date: " + str(getdate.value));  
+        ws.send("date: " + getdate.value);  
         ws.send("open: " + str(gettimeopen.value));
         ws.send("close: " + str(gettimeclose.value));
       };
