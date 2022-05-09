@@ -194,12 +194,12 @@
         }
       };
       send.onclick = function () {   
-        setdate = getdate.value;
-        timeopen = gettimeopen.value;
-        timeclose = gettimeclose.value;
-        ws.send("date: " + setdate.tostring());  
-        ws.send("open: " + timeopen);
-        ws.send("close: " + timeclose);
+        // setdate = getdate.value;
+        // timeopen = gettimeopen.value;
+        // timeclose = gettimeclose.value;
+        ws.send("date: " + getdate.value.toString());  
+        ws.send("open: " + gettimeopen.value);
+        ws.send("close: " + gettimeclose.value);
       };
 
       window.onbeforeunload = function() {
