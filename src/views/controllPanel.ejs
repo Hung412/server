@@ -197,7 +197,7 @@
         // setdate = getdate.value;
         // timeopen = gettimeopen.value;
         // timeclose = gettimeclose.value;
-        clock = [gettimeopen.value,gettimeclose.value]
+        clock = [typeof(gettimeopen.value),typeof(gettimeclose.value)]
         ws.send("date: " + getdate.value.toString());  
         ws.send(clock);
         // ws.send("close: " + gettimeclose.value);
