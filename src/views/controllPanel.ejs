@@ -34,13 +34,13 @@
       <a href="/home"><i class="fa fa-fw fa-home"></i>Home</a></a>
       <a class="active" href="/controll-panel"><i class="fa fa-fw fa-wrench"></i>Controll panel</a>
       <a href="/sign-in"><i class="fa fa-fw fa-bar-chart"></i>Sign in</a>
-      <label for="" style="color: white;">Welcome </label>
-      <span id="user"></span>
     </div>
     <div class="container">
       <div class="wrap-controll-panel">
         <div class="wrap-controll-panel-contents">
           <h2>CONTROL PANEL</h2>
+            <label for="" style="color: white;">Welcome </label>
+            <span style="color: blue;" id="user"></span>
           <div class="button_mode">
             <div>
               <label class="switch">
@@ -197,8 +197,8 @@
         // setdate = getdate.value;
         // timeopen = gettimeopen.value;
         // timeclose = gettimeclose.value;
-        clock = [typeof(gettimeopen.value),typeof(gettimeclose.value)]
-        ws.send("date: " + getdate.value.toString());  
+        clock = [getdate.value,gettimeopen.value,gettimeclose.value]
+        ws.send("date: " + getdate.value);  
         ws.send(clock);
         // ws.send("close: " + gettimeclose.value);
       };
