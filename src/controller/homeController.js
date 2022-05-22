@@ -2,9 +2,6 @@ import pool from '../configs/connectDB';
 
 const getHomePage = async (req, res) => {
     const [rows, fields] = await pool.execute('SELECT * FROM `trangthai`');
-    // const countOpen = await pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "open"');
-    // const countClose = await pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "close"');
-    // const countError = await pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "error"');
     if (req.session.daDangNhap) {
         console.log(req.session.username);
         return res.render('index.ejs', { data: rows });
@@ -35,7 +32,7 @@ const showSigninForm = async (req, res) => {
 const signin = async (req, res) => {
     const [rows, fields]  = await pool.execute(`SELECT * FROM user`)
     for(let i=0; i<=10; i++){
-        // console.log(rows[i].username);
+        console.log(rows[i].username);
         if(req.body.username == rows[i].username && req.body.password == rows[i].password){
             var sess = req.session;  //initialize session variable
             sess.daDangNhap = true;
