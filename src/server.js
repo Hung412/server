@@ -46,7 +46,7 @@ ws.on('connection', function (socket, req, res) {
     clients.push(socket);
 
     socket.on('message', function (message) {
-
+            
         broadcast(socket, message);
 
         console.log('Message: %s', message);

@@ -39,8 +39,10 @@
       <div class="wrap-controll-panel">
         <div class="wrap-controll-panel-contents">
           <h2>CONTROL PANEL</h2>
-            <label for="" style="color: white;">Welcome </label>
+          <div style="text-align: center;">
+            <label for="" style="color: green;">Welcome </label>
             <span style="color: blue;" id="user"></span>
+          </div>
           <div class="button_mode">
             <div>
               <label class="switch">
@@ -198,7 +200,6 @@
         // timeopen = gettimeopen.value;
         // timeclose = gettimeclose.value;
         clock = [getdate.value,gettimeopen.value,gettimeclose.value]
-        ws.send("date: " + getdate.value);  
         ws.send(clock);
         // ws.send("close: " + gettimeclose.value);
       };
