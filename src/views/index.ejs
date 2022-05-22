@@ -55,10 +55,9 @@
     </div>
 
     <script type="text/javascript">
-      import pool from '../configs/connectDB';
       var url = "ahkiot.herokuapp.com"; 
       var ws = new WebSocket("wss://" + url); 
-      var countOpen = pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "open"');
+      // var countOpen = pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "open"');
       // var countClose = pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "close"');
       // var countError = pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "error"');
       ws.onopen = function () 
@@ -85,7 +84,7 @@
           datasets:[{
             label:'Status',
             data:[
-              countOpen,
+              25,
               30,
               5,
             ],
