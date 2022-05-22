@@ -71,6 +71,10 @@
     </script>
 
     <script>
+      import pool from '../configs/connectDB';
+      const countOpen = pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "open"');
+      const countClose = pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "close"');
+      const countError = pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "error"');
       let myChart = document.getElementById('myChart').getContext('2d');
       // Global Options
       Chart.defaults.global.defaultFontFamily = 'Lato';
@@ -84,9 +88,9 @@
           datasets:[{
             label:'Status',
             data:[
-              25,
-              30,
-              3,
+              countOpen,
+              countClose,
+              countError,
             ],
             //backgroundColor:'green',
             backgroundColor:[
