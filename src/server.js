@@ -47,8 +47,8 @@ ws.on('connection', function (socket, req, res) {
     clients.push(socket);
     var [rows, fields] = pool.execute(`SELECT * FROM nguoidung`);
     socket.on('message', function (message) {
-        for(let i=0; i<=10; i++){
-            if(message == rows[i].name){
+        for(let i=0; i<=rows.length; i++){
+            if(rows[i].name == message){
                 broadcast(socket, message);
                 console.log('Message: %s', message);
             }else{
