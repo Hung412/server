@@ -47,9 +47,9 @@ ws.on('connection', function (socket, req, res) {
 
     socket.on('message', function (message) {
         const user = JSON.parse(message);
-        broadcast(socket, user.id);
+        broadcast(socket, user.name);
 
-        console.log('Message: %s', user.id);
+        console.log('Message: %s', user.name);
     });
 
     socket.on('close', function () {
