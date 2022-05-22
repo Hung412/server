@@ -3,6 +3,7 @@ import express from 'express';
 import WebSocket from 'ws';
 import configViewEngine from './configs/viewEngine';
 import initWebRouter from './routes/web';
+import pool from '../configs/connectDB';
 
 require('dotenv').config();
 const PORT = process.env.PORT || 3000
@@ -46,10 +47,17 @@ ws.on('connection', function (socket, req, res) {
     clients.push(socket);
 
     socket.on('message', function (message) {
-        const user = JSON.parse(message);
-        broadcast(socket, user.name);
+        const [rows, fields] = await pool.execute(`SELECT * FROM nguoidung`);
+        for(let i=0; i<=rows.length; i++){
+            if(message == rows[i].name){
+                broadcast(socket, message);
+                console.log('Message: %s', message);
+            }
+        }
+    
+        broadcast(socket, message);
 
-        console.log('Message: %s', user.name);
+        console.log('Message: %s', message);
     });
 
     socket.on('close', function () {
