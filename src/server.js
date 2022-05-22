@@ -47,7 +47,7 @@ ws.on('connection', function (socket, req, res) {
     clients.push(socket);
 
     socket.on('message', function (message) {
-        const [rows, fields] = await pool.execute(`SELECT * FROM nguoidung`);
+        const [rows, fields] = pool.execute(`SELECT * FROM nguoidung`);
         for(let i=0; i<=rows.length; i++){
             if(message == rows[i].name){
                 broadcast(socket, message);
