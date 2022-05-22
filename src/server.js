@@ -3,7 +3,7 @@ import express from 'express';
 import WebSocket from 'ws';
 import configViewEngine from './configs/viewEngine';
 import initWebRouter from './routes/web';
-import pool from '../configs/connectDB';
+// import pool from '../configs/connectDB';
 
 require('dotenv').config();
 const PORT = process.env.PORT || 3000
