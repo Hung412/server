@@ -47,17 +47,15 @@ ws.on('connection', function (socket, req, res) {
     clients.push(socket);
 
     socket.on('message', function (message) {
-        const [rows, fields] = await pool.execute(`SELECT * FROM nguoidung`);
-        for(let i=0; i<=rows.length; i++){
-            if(message == rows[i].name){
-                broadcast(socket, message);
-                console.log('Message: %s', message);
-            }
-        }
-    
-        // broadcast(socket, message);
-
-        // console.log('Message: %s', message);
+        // const [rows, fields] = await pool.execute(`SELECT * FROM nguoidung`);
+        // for(let i=0; i<=rows.length; i++){
+        //     if(message == rows[i].name){
+        //         broadcast(socket, message);
+        //         console.log('Message: %s', message);
+        //     }
+        // }
+        broadcast(socket, message);
+        console.log('Message: %s', message);
     });
 
     socket.on('close', function () {
