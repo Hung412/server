@@ -57,9 +57,6 @@
     <script type="text/javascript">
       var url = "ahkiot.herokuapp.com"; 
       var ws = new WebSocket("wss://" + url); 
-      // var countOpen = pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "open"');
-      // var countClose = pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "close"');
-      // var countError = pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "error"');
       ws.onopen = function () 
       {
         ws.send(JSON.stringify({
@@ -71,6 +68,13 @@
       ws.onclose = function () {
         alert("Server destroyed!");
       };
+    </script>
+
+    <script>
+      // import pool from '../configs/connectDB';
+      // const countOpen = pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "open"');
+      // const countClose = pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "close"');
+      // const countError = pool.execute('SELECT COUNT(*) FROM trangthai WHERE status = "error"');
       let myChart = document.getElementById('myChart').getContext('2d');
       // Global Options
       Chart.defaults.global.defaultFontFamily = 'Lato';
