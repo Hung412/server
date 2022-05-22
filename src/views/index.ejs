@@ -71,8 +71,8 @@
     </script>
 
     <script>
-      import pool from '../configs/connectDB';
-      const [rows, fields] = await pool.execute('SELECT COUNT(*) AS `countopen` FROM `trangthai` WHERE status = "open"');
+      // import pool from '../configs/connectDB';
+      // const [rows, fields] = await pool.execute('SELECT COUNT(*) AS `countopen` FROM `trangthai` WHERE status = "open"');
       let myChart = document.getElementById('myChart').getContext('2d');
       // Global Options
       Chart.defaults.global.defaultFontFamily = 'Lato';
