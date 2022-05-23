@@ -45,20 +45,18 @@ function broadcast(socket, data) {
 ws.on('connection', function (socket, req, res) {
 
     clients.push(socket);
-    const a = "";
+    //const a = "";
     socket.on('message', function (message) {
         const rows = pool.execute(`SELECT * FROM nguoidung`);
         for(let i=0; i<rows.length; i++){
         //     if(rows[i].name == message){
         //         broadcast(socket, message);
         //         console.log('Recognition: %s', message);
-            a = rows[i].name;
+            console.log(rows[i].name);
         //     }
         }
         broadcast(socket, message);
-        broadcast(socket, a);
         console.log('Message: %s', message);
-        console.log('Test: %s', a);
     });
 
     socket.on('close', function () {
