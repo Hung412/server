@@ -49,8 +49,8 @@ ws.on('connection', function (socket, req, res) {
     socket.on('message', function (message) {
         broadcast(socket, message);
         console.log('Message: %s', message);
-        const rows = pool.execute(`SELECT * FROM nguoidung`);
-        console.log(rows)
+        const [rows, fields] = pool.execute(`SELECT * FROM nguoidung`);
+        console.log(rows);
         for(let i=0; i<rows.length; i++){
             if(rows[i].name == message){
                 console.log('Recognition: %s', message);
