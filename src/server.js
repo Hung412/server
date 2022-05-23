@@ -49,15 +49,15 @@ ws.on('connection', function (socket, req, res) {
     socket.on('message', function (message) {
         broadcast(socket, message);
         console.log('Message: %s', message);
-        
-        // console.log(rows);
-        for(let i=0; i<10; i++){
-            const { rows, fields } = pool.execute(`SELECT * FROM nguoidung`);
-            // if(rows[i].name == message){
-            // console.log('Recognition: %s', message);
-             console.log(rows[i].name);
-            // }
-        }
+        const { rows, fields } = pool.execute(`SELECT * FROM nguoidung`);
+        console.log(rows);
+        // for(let i=0; i<10; i++){
+            
+        //     // if(rows[i].name == message){
+        //     // console.log('Recognition: %s', message);
+        //      console.log(rows[i].name);
+        //     // }
+        // }
     });
 
     socket.on('close', function () {
