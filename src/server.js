@@ -55,7 +55,7 @@ ws.on('connection', function (socket, req, res) {
         //     }
         }
         broadcast(socket, message);
-        // console.log('Message: %s', message);
+        console.log('Message: %s', message);
     });
 
     socket.on('close', function () {
