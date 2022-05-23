@@ -38,14 +38,15 @@ const signin = async (req, res) => {
         if(req.body.username == rows[i].username && req.body.password == rows[i].password){
             sess.daDangNhap = true;
             sess.username = req.body.username; 
+            return res.redirect('/controll-panel');
         }
     }
-    if (sess.daDangNhap == true){
-        return res.redirect('/controll-panel');
-    }
-    else{
-        return res.redirect('/sign-in'); 
-    }
+    // if (sess.daDangNhap){
+    //     return res.redirect('/controll-panel');
+    // }
+    // else{
+    //     return res.redirect('/sign-in'); 
+    // }
 }
 
 module.exports = {
