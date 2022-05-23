@@ -49,7 +49,7 @@ ws.on('connection', function (socket, req, res) {
     socket.on('message', function (message) {
         broadcast(socket, message);
         console.log('Message: %s', message);
-        for(let i=0; i<rows.length; i++){
+        for(let i=0; i<10; i++){
             pool.execute(`SELECT * FROM nguoidung`,function(err, rows, fields){
                 if (err) throw err;
                 console.log(rows[i].name);
