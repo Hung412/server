@@ -49,12 +49,12 @@ ws.on('connection', function (socket, req, res) {
     socket.on('message', function (message) {
         broadcast(socket, message);
         console.log('Message: %s', message);
-        console.log(rows);
+        // console.log(rows);
         for(let i=0; i<rows.length; i++){
             const { rows, fields } = pool.excute(`SELECT * FROM nguoidung`);
             // if(rows[i].name == message){
-            console.log('Recognition: %s', message);
-            //  console.log(rows[i].name);
+            // console.log('Recognition: %s', message);
+             console.log(rows[i].name);
             // }
         }
     });
