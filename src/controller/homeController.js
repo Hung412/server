@@ -42,7 +42,20 @@ const signin = async (req, res) => {
         // }else{
         //     return res.redirect('/sign-in'); 
         // }
+        if(req.body.username == rows[i].username && req.body.password == rows[i].password){
+            var sess = req.session;  //initialize session variable
+                sess.daDangNhap = true;
+                sess.username = req.body.username; 
+        }
     }
+
+    if (req.session.daDangNhap){
+        return res.redirect('/controll-panel');
+    }
+    else{
+        return res.redirect('/sign-in'); 
+    }
+
 }
 
 module.exports = {
