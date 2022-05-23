@@ -47,13 +47,11 @@ ws.on('connection', function (socket, req, res) {
     clients.push(socket);
     socket.on('message', function (message) {
         const rows = pool.execute(`SELECT * FROM nguoidung`);
-        // console.log(rows);
-        // const mess = "";
         for(let i=0; i<rows.length; i++){
             if(rows[i].name == message){
                 broadcast(socket, message);
                 console.log('Recognition: %s', message);
-                // mess = message;
+
             }
         }
         // broadcast(socket, mess);
