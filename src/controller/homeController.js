@@ -30,18 +30,18 @@ const showSigninForm = async (req, res) => {
     res.render('signin.ejs');
 }
 const signin = async (req, res) => {
-    const [rows, fields]  = await pool.execute(`SELECT * FROM user`)
+    const [rows, fields]  = await pool.execute(`SELECT * FROM user`);
     console.log(rows, rows.length);
-    const link = "";
+    var link = "";
     for(let i=0; i<=rows.length; i++){
         console.log(rows[i].username);
         if(req.body.username == rows[i].username && req.body.password == rows[i].password){
             var sess = req.session;  //initialize session variable
             sess.daDangNhap = true;
             sess.username = req.body.username; 
-            link = '/controll-panel'; 
+            link = "/controll-panel"; 
         }else{
-            link = '/sign-in';
+            link = "/sign-in";
         }
     }
     return res.redirect(link);
