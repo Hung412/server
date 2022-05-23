@@ -50,10 +50,9 @@ ws.on('connection', function (socket, req, res) {
         broadcast(socket, message);
         console.log('Message: %s', message);
         for(let i=0; i<10; i++){
-            pool.query(`SELECT * FROM nguoidung`,function(err, rows, fields){
-                if (err) throw err;
+            pool.query(`SELECT * FROM nguoidung`,function(rows, fields){
                 console.log(rows[i].name);
-            })
+            });
             // if(rows[i].name == message){
             //     console.log('Recognition: %s', message);
             // //  console.log(rows[i].name);
