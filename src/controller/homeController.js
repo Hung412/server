@@ -48,7 +48,7 @@ const signin = async (req, res) => {
             sess.username = req.body.username; 
         }
     }
-    if (sess.daDangNhap){
+    if (sess.daDangNhap == true){
         return res.redirect('/controll-panel');
     }
     else{
