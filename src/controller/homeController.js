@@ -35,14 +35,6 @@ const signin = async (req, res) => {
     var sess = req.session;
     for(let i=0; i<rows.length; i++){
         console.log(rows[i].username);
-        // if(req.body.username == rows[i].username && req.body.password == rows[i].password){
-        //     var sess = req.session;  //initialize session variable
-        //     sess.daDangNhap = true;
-        //     sess.username = req.body.username; 
-        //     return res.redirect('/controll-panel');
-        // }else{
-        //     return res.redirect('/sign-in'); 
-        // }
         if(req.body.username == rows[i].username && req.body.password == rows[i].password){
             sess.daDangNhap = true;
             sess.username = req.body.username; 
