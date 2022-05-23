@@ -31,7 +31,7 @@ const showSigninForm = async (req, res) => {
 }
 const signin = async (req, res) => {
     const [rows, fields]  = await pool.execute(`SELECT * FROM user`);
-    // console.log(rows, rows.length)
+    console.log(rows);
     var sess = req.session;
     for(let i=0; i<rows.length; i++){
         // console.log(rows[i].username);
