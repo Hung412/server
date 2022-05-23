@@ -30,11 +30,11 @@ const showSigninForm = async (req, res) => {
     res.render('signin.ejs');
 }
 const signin = async (req, res) => {
-    const [rows, fields]  = await pool.execute(`SELECT * FROM user`)
-    console.log(rows, rows.length)
+    const [rows, fields]  = await pool.execute(`SELECT * FROM user`);
+    // console.log(rows, rows.length)
     var sess = req.session;
     for(let i=0; i<rows.length; i++){
-        console.log(rows[i].username);
+        // console.log(rows[i].username);
         if(req.body.username == rows[i].username && req.body.password == rows[i].password){
             sess.daDangNhap = true;
             sess.username = req.body.username; 
