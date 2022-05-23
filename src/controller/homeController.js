@@ -29,8 +29,8 @@ const postDeleteStatus = async (req, res) => {
 const showSigninForm = async (req, res) => {
     res.render('signin.ejs');
 }
-const signin = async (req, res) => {
-    const [rows, fields]  = await pool.execute(`SELECT * FROM user`)
+const signin = (req, res) => {
+    const [rows, fields]  =  pool.execute(`SELECT * FROM user`)
     console.log(rows, rows.length)
     var sess = req.session;
     for(let i=0; i<=rows.length; i++){
