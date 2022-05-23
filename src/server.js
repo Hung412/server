@@ -46,16 +46,16 @@ ws.on('connection', function (socket, req, res) {
 
     clients.push(socket);
     socket.on('message', function (message) {
-        const rows = pool.execute(`SELECT * FROM nguoidung`);
-        for(let i=0; i<rows.length; i++){
-            if(rows[i].name == message){
-                broadcast(socket, message);
-                console.log('Recognition: %s', message);
+        // const rows = pool.execute(`SELECT * FROM nguoidung`);
+        // for(let i=0; i<rows.length; i++){
+        //     if(rows[i].name == message){
+        //         broadcast(socket, message);
+        //         console.log('Recognition: %s', message);
 
-            }
-        }
-        // broadcast(socket, mess);
-        // console.log('Message: %s', mess);
+        //     }
+        // }
+        broadcast(socket, message);
+        console.log('Message: %s', message);
     });
 
     socket.on('close', function () {
