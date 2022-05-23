@@ -49,14 +49,13 @@ ws.on('connection', function (socket, req, res) {
         const [rows, fields] = pool.execute(`SELECT * FROM nguoidung`);
         for(let i=0; i<rows.length; i++){
             if(rows[i].name == message){
-                broadcast(socket, message);
-                console.log('Message: %s', message);
-            }else{
-                console.log('check fail');
+                // broadcast(socket, message);
+                mess = message;
+                // console.log('Message: %s', message);
             }
         }
-        // broadcast(socket, message);
-        // console.log('Message: %s', message);
+        broadcast(socket, mess);
+        console.log('Message: %s', mess);
     });
 
     socket.on('close', function () {
