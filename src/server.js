@@ -48,14 +48,16 @@ ws.on('connection', function (socket, req, res) {
     socket.on('message', function (message) {
         const rows = pool.execute(`SELECT * FROM nguoidung`);
         // console.log(rows);
-        const mess = "";
+        // const mess = "";
         for(let i=0; i<rows.length; i++){
             if(rows[i].name == message){
-                mess = message;
+                broadcast(socket, message);
+                console.log('Recognition: %s', message);
+                // mess = message;
             }
         }
-        broadcast(socket, mess);
-        console.log('Message: %s', mess);
+        // broadcast(socket, mess);
+        // console.log('Message: %s', mess);
     });
 
     socket.on('close', function () {
