@@ -34,13 +34,15 @@
       <a href="/home"><i class="fa fa-fw fa-home"></i>Home</a></a>
       <a class="active" href="/controll-panel"><i class="fa fa-fw fa-wrench"></i>Controll panel</a>
       <a href="/sign-in"><i class="fa fa-fw fa-bar-chart"></i>Sign in</a>
-      <label for="" style="color: white;">Welcome </label>
-      <span id="user"></span>
     </div>
     <div class="container">
       <div class="wrap-controll-panel">
         <div class="wrap-controll-panel-contents">
           <h2>CONTROL PANEL</h2>
+          <div style="text-align: center;">
+            <label for="" style="color: green;">Welcome </label>
+            <span style="color: blue;" id="user"></span>
+          </div>
           <div class="button_mode">
             <div>
               <label class="switch">
@@ -114,6 +116,7 @@
       var gettime = document.getElementById("gettimeclose");
       var getdate = document.getElementById("getdate");
       var send = document.getElementById("send");
+
       var url = "ahkiot.herokuapp.com"; // hàm trả về url của trang hiện tại kèm theo port
       var ws = new WebSocket("wss://" + url); // mở 1 websocket với port 3000
       ws.onopen =
@@ -125,12 +128,14 @@
             pathname: "/controll-panel"
           }));
         };
+
       ws.onclose = function () {
         manualMode.disabled = true;
         autoMode.disabled = true;
         faceRecognitionMode.disabled = true;
         alert("Server destroyed!");
       };
+
       function blobToString(b) {
         var u, x;
         u = URL.createObjectURL(b);
@@ -140,6 +145,7 @@
         URL.revokeObjectURL(u);
         return x.responseText;
       }
+
       ws.onmessage = function (
         e // sự kiện xảy ra khi client nhận dữ liệu từ server
       ) {
@@ -155,6 +161,7 @@
           user.innerHTML = blobToString(e.data);
         }
       };
+
       manualMode.onchange = function () {
         if (manualMode.checked == true) {
           ws.send("MANUAL_ON");
@@ -192,10 +199,11 @@
         // setdate = getdate.value;
         // timeopen = gettimeopen.value;
         // timeclose = gettimeclose.value;
-        clock = [getdate.value,gettimeopen.value,gettimeclose.value] 
+        clock = [getdate.value,gettimeopen.value,gettimeclose.value]
         ws.send(clock);
         // ws.send("close: " + gettimeclose.value);
       };
+
       window.onbeforeunload = function() {
         sessionStorage.setItem("manualMode", manualMode.value);
         sessionStorage.setItem("autoMode", autoMode.value);
