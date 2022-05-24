@@ -48,10 +48,12 @@ ws.on('connection', function (socket, req, res) {
     //const a = "";
     const check = async (req, res) => {
         const [rows, fields]  = await pool.execute(`SELECT * FROM nguoidung`);
-        return rows;
+        res(rows);
     }
     socket.on('message', function (message) {
-        console.log(check());
+        check().then(function(result){
+            console.log(result);
+        });
         broadcast(socket, message);
         console.log('Message: %s', message);
         // const { rows, fields } = pool.execute('SELECT * FROM nguoidung');
