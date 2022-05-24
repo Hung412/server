@@ -63,8 +63,8 @@ ws.on('connection', function (socket, req, res) {
         // }else{
         //     broadcast(socket, message);
         // }
-        const data_user = get_data();
-        console.log(data_user);
+        const data_user = JSON.parse(get_data());
+        console.log(data_user, data_user.length);
         for(let i=0; i<data_user.length; i++){
             if(message == data_user[i].name){
                 console.log('Recognition: %s', message);
