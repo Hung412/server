@@ -47,9 +47,9 @@ const get_data = async() =>{
     // console.log(rows);
     for(let i=0; i<rows.length; i++){
         face.push(rows[i].name);
-        return face;
     }
     console.log(face);
+    return face;
     
 }
 
