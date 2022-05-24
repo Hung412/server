@@ -43,13 +43,10 @@ function broadcast(socket, data) {
 }
 const get_data = async () => {
     const [rows, fields]  = await pool.execute(`SELECT * FROM nguoidung`);
-    const face = [];
-    // console.log(rows);
-    for(let i=0; i<rows.length; i++){
-        face.push(rows[i].name);
-    }
-    console.log(face);
-    return face;
+    // const face = [];
+    console.log(rows);
+    // console.log(face);
+    return rows;
 }
 
 ws.on('connection', function (socket, req, res) {
@@ -66,10 +63,10 @@ ws.on('connection', function (socket, req, res) {
         // }else{
         //     broadcast(socket, message);
         // }
-        const check_face = get_data();
-        console.log(check_face);
+        const data_user = get_data();
+        console.log(data_user);
         for(let i=0; i<check_face.length; i++){
-            if(message == check_face[i]){
+            if(message == data_user[i].name){
                 console.log('Recognition: %s', message);
             }
         }
