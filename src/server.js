@@ -45,8 +45,8 @@ const get_data = async () => {
     const [rows, fields]  = await pool.execute(`SELECT * FROM nguoidung`);
     // console.log(rows);
     for(let i=0; i<rows.length; i++){
-        console.log(rows[i].username);
-        }
+        console.log(rows[i].name);
+    }
 }
 
 ws.on('connection', function (socket, req, res) {
