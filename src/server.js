@@ -43,12 +43,10 @@ function broadcast(socket, data) {
 }
 const get_data = async () => {
     const [rows, fields]  = await pool.execute(`SELECT * FROM nguoidung`);
-    console.log(rows);
-    // for(let i=0; i<rows.length; i++){
-    //     // console.log(rows[i].username);
-          
-    //     }
-    // }
+    // console.log(rows);
+    for(let i=0; i<rows.length; i++){
+        console.log(rows[i].username);
+        }
 }
 
 ws.on('connection', function (socket, req, res) {
@@ -65,15 +63,13 @@ ws.on('connection', function (socket, req, res) {
         // }else{
         //     broadcast(socket, message);
         // }
-        get_data();
-        // const rows = pool.query('SELECT * FROM nguoidung');
-        // console.log(rows);
+        // get_data();
         // for(let i=0; i<rows.length; i++){
-            
-            // if(rows[i].name == message){
-            // console.log('Recognition: %s', message);
-            //  console.log([rows[i].name]);
-            // }
+        //     get_data();
+        //     if(rows[i].name == message){
+        //     console.log('Recognition: %s', message);
+        //     console.log([rows[i].name]);
+        //     }
         // }
     });
 
