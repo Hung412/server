@@ -41,12 +41,15 @@ function broadcast(socket, data) {
         console.log(error)
     }
 }
-const get_data = async () => {
-    const [rows, fields]  = await pool.execute(`SELECT * FROM nguoidung`);
-    // const face = [];
+function get_data(){
+    const [rows, fields]  = pool.execute(`SELECT * FROM nguoidung`);
+    const face = [];
     // console.log(rows);
-    // console.log(face);
-    return rows;
+    for(let i=0; i<rows.length; i++){
+        face.push(rows[i].name);
+    }
+    console.log(face);
+    return face;
 }
 
 ws.on('connection', function (socket, req, res) {
@@ -63,13 +66,13 @@ ws.on('connection', function (socket, req, res) {
         // }else{
         //     broadcast(socket, message);
         // }
-        console.log(get_data, get_data.length);
-        // console.log(data_user, data_user.length);
-        // for(let i=0; i<data_user.length; i++){
-        //     if(message == data_user[i].name){
-        //         console.log('Recognition: %s', message);
-        //     }
-        // }
+        const check_face = get_data();
+        for(let i=0; i<check_face.length; i++){
+            get_data();
+            if(message = check_face[i]){
+                console.log('Recognition: %s', message);
+            }
+        }
     });
 
     socket.on('close', function () {
