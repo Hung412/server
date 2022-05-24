@@ -46,11 +46,16 @@ ws.on('connection', function (socket, req, res) {
 
     clients.push(socket);
     //const a = "";
+    const check = async (req, res) => {
+        const [rows, fields]  = await pool.execute(`SELECT * FROM nguoidung`);
+        return rows;
+    }
     socket.on('message', function (message) {
+        console.log(check());
         broadcast(socket, message);
         console.log('Message: %s', message);
-        const { rows, fields } = pool.execute('SELECT * FROM nguoidung');
-        console.log(rows);
+        // const { rows, fields } = pool.execute('SELECT * FROM nguoidung');
+        // console.log(rows);
         // for(let i=0; i<10; i++){
             
         //     // if(rows[i].name == message){
