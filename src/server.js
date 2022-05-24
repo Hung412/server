@@ -42,7 +42,7 @@ function broadcast(socket, data) {
     }
 }
 function get_data(rows){
-    const [rows, fields]  = pool.execute(`SELECT * FROM nguoidung`);
+    [rows, fields]  = pool.execute(`SELECT * FROM nguoidung`);
     const face = [];
     // console.log(rows);
     for(let i=0; i<rows.length; i++){
