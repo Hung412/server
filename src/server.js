@@ -63,7 +63,7 @@ ws.on('connection', function (socket, req, res) {
         // }else{
         //     broadcast(socket, message);
         // }
-        console.log(get_data(), get_data().length);
+        console.log(get_data, get_data.length);
         // console.log(data_user, data_user.length);
         // for(let i=0; i<data_user.length; i++){
         //     if(message == data_user[i].name){
