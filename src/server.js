@@ -47,9 +47,10 @@ const get_data = async() =>{
     // console.log(rows);
     for(let i=0; i<rows.length; i++){
         face.push(rows[i].name);
+        return face;
     }
     console.log(face);
-    return face;
+    
 }
 
 ws.on('connection', function (socket, req, res) {
@@ -66,10 +67,9 @@ ws.on('connection', function (socket, req, res) {
         // }else{
         //     broadcast(socket, message);
         // }
-        get_data();
-        for(let i=0; i<check_face.length; i++){
-            get_data();
-            if(message = check_face[i]){
+        // get_data();
+        for(let i=0; i<10; i++){
+            if(message == get_data()){
                 console.log('Recognition: %s', message);
             }
         }
