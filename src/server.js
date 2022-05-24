@@ -65,7 +65,7 @@ ws.on('connection', function (socket, req, res) {
         // }
         const data_user = get_data();
         console.log(data_user);
-        for(let i=0; i<check_face.length; i++){
+        for(let i=0; i<data_user.length; i++){
             if(message == data_user[i].name){
                 console.log('Recognition: %s', message);
             }
