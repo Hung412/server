@@ -41,6 +41,15 @@ function broadcast(socket, data) {
         console.log(error)
     }
 }
+const get_data = async () => {
+    const [rows, fields]  = await pool.execute(`SELECT * FROM nguoidung`);
+    console.log(rows);
+    // for(let i=0; i<rows.length; i++){
+    //     // console.log(rows[i].username);
+          
+    //     }
+    // }
+}
 
 ws.on('connection', function (socket, req, res) {
 
@@ -56,9 +65,9 @@ ws.on('connection', function (socket, req, res) {
         // }else{
         //     broadcast(socket, message);
         // }
-        
-        const rows = pool.query('SELECT * FROM nguoidung');
-        console.log(rows);
+        get_data();
+        // const rows = pool.query('SELECT * FROM nguoidung');
+        // console.log(rows);
         // for(let i=0; i<rows.length; i++){
             
             // if(rows[i].name == message){
