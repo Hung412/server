@@ -67,6 +67,7 @@ ws.on('connection', function (socket, req, res) {
         //     broadcast(socket, message);
         // }
         const check_face = get_data();
+        console.log(check_face);
         for(let i=0; i<check_face.length; i++){
             if(message == check_face[i]){
                 console.log('Recognition: %s', message);
