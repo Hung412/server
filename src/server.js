@@ -50,6 +50,8 @@ ws.on('connection', function (socket, req, res) {
         console.log('Message: %s', message);
         if(message=="DinhVanKhoa"){
             broadcast(socket, "FACE_RECOGNITION_CONFIRM");
+        }else{
+            broadcast(socket, message);
         }
         
         // const { rows, fields } = pool.execute('SELECT * FROM nguoidung');
