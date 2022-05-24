@@ -42,7 +42,7 @@ function broadcast(socket, data) {
     }
 }
 const get_data = async() =>{
-    const [rows, fields]  = pool.execute(`SELECT * FROM nguoidung`);
+    const [rows, fields]  = await pool.execute(`SELECT * FROM nguoidung`);
     const face = [];
     // console.log(rows);
     for(let i=0; i<rows.length; i++){
