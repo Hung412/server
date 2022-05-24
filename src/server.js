@@ -43,9 +43,11 @@ function broadcast(socket, data) {
 }
 const get_data = async () => {
     const [rows, fields]  = await pool.execute(`SELECT * FROM nguoidung`);
+    const face = [];
     // console.log(rows);
     for(let i=0; i<rows.length; i++){
-        console.log(rows[i].name);
+        face.push(rows[i].name);
+        console.log(face);
     }
 }
 
