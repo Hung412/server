@@ -59,13 +59,13 @@ ws.on('connection', function (socket, req, res) {
         
         const { rows, fields } = pool.execute('SELECT * FROM nguoidung');
         console.log(rows);
-        for(let i=0; i<rows.length; i++){
+        // for(let i=0; i<rows.length; i++){
             
             // if(rows[i].name == message){
             // console.log('Recognition: %s', message);
-             console.log([rows[i].name]);
+            //  console.log([rows[i].name]);
             // }
-        }
+        // }
     });
 
     socket.on('close', function () {
