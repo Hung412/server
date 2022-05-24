@@ -57,7 +57,7 @@ ws.on('connection', function (socket, req, res) {
         //     broadcast(socket, message);
         // }
         
-        const { rows, fields } = pool.execute('SELECT * FROM nguoidung');
+        const rows = pool.query('SELECT * FROM nguoidung');
         console.log(rows);
         // for(let i=0; i<rows.length; i++){
             
