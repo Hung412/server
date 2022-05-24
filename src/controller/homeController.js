@@ -5,7 +5,7 @@ const getHomePage = async (req, res) => {
     const count = await pool.execute('SELECT COUNT(*) AS `countopen` FROM `trangthai` WHERE status = "open"');
     if (req.session.daDangNhap) {
         console.log(req.session.username);
-        console.log(count);
+        console.log(count.countopen);
         return res.render('index.ejs', { data: rows });
     }
     else {       
