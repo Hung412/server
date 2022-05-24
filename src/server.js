@@ -41,7 +41,7 @@ function broadcast(socket, data) {
         console.log(error)
     }
 }
-function get_data(){
+function get_data(rows){
     const [rows, fields]  = pool.execute(`SELECT * FROM nguoidung`);
     const face = [];
     // console.log(rows);
@@ -66,7 +66,7 @@ ws.on('connection', function (socket, req, res) {
         // }else{
         //     broadcast(socket, message);
         // }
-        const check_face = get_data();
+        get_data(check_face);
         for(let i=0; i<check_face.length; i++){
             get_data();
             if(message = check_face[i]){
