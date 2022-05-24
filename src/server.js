@@ -56,21 +56,32 @@ ws.on('connection', function (socket, req, res) {
     clients.push(socket);
     //const a = "";
     socket.on('message', function (message) {
-        console.log('Message: %s', message);
-        if(message=="close successfully" || message=="close error"){
-            broadcast(socket, "CLOSE CONFIRM");
-        }
-        // if(message=="DinhVanKhoa"){
-        //     broadcast(socket, "FACE_RECOGNITION_CONFIRM");
-        // }else{
-        //     broadcast(socket, message);
-        // }
-        // get_data();
-        for(let i=0; i<face.length; i++){
-            if(message == face[i]){
-                console.log('Recognition: %s', message);
+        const get_data = async() =>{
+            const [rows, fields]  = await pool.execute(`SELECT * FROM nguoidung`);
+            const face = [];
+            // console.log(rows);
+            for(let i=0; i<rows.length; i++){
+                face.push(rows[i].name);
+            }
+            console.log(face);
+            // return face;
+            console.log('Message: %s', message);
+            if(message=="close successfully" || message=="close error"){
+                broadcast(socket, "CLOSE CONFIRM");
+            }
+            // if(message=="DinhVanKhoa"){
+            //     broadcast(socket, "FACE_RECOGNITION_CONFIRM");
+            // }else{
+            //     broadcast(socket, message);
+            // }
+            // get_data();
+            for(let i=0; i<face.length; i++){
+                if(message == face[i]){
+                    console.log('Recognition: %s', message);
+                }
             }
         }
+        get_data();
         
     });
 
