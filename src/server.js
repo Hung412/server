@@ -41,7 +41,7 @@ function broadcast(socket, data) {
         console.log(error)
     }
 }
-function get_data(){
+const get_data = async() =>{
     const [rows, fields]  = pool.execute(`SELECT * FROM nguoidung`);
     const face = [];
     // console.log(rows);
