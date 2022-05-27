@@ -73,7 +73,7 @@
       import pool from '../configs/connectDB';
       const get_count = async() =>{
             const [rows, fields]  = await pool.execute('SELECT COUNT(*) AS `countopen` FROM `trangthai` WHERE status = "open"');
-            console.log(rows);
+            console.log(rows.countopen);
         }
         get_count();
       let myChart = document.getElementById('myChart').getContext('2d');
