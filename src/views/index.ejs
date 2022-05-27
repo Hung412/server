@@ -20,7 +20,55 @@
     </div>
     <div class="w3-container">
       <h2>Status table</h2>
-      <script>
+      <div class="container">
+        <canvas id="myChart"></canvas>
+      </div>
+      <div>
+        <table class="w3-table-all w3-hoverable">
+          <thead>
+            <tr class="w3-light-gray">
+              <th>ID</th>
+              <th>Status</th>
+              <th>Time</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=0; i < data.length; i++) { %>
+              <tr>
+                <td><%= data[i].id %></td>
+                <td><%= data[i].status %></td>
+                <td><%= data[i].time %></td>
+                <td>
+                  <form action="/delete-status" , method="post">
+                    <input
+                      type="text"
+                      hidden
+                      value="<%= data[i].id %>"
+                      name="statusId"
+                    />
+                    <button type="submit" class="btn-CRUD">Delete</button>
+                  </form>
+                </td>
+            </tr>
+            <% } %>
+          </tbody>
+    </div>
+
+    <script type="text/javascript">
+      var url = "ahkiot.herokuapp.com"; 
+      var ws = new WebSocket("wss://" + url); 
+      ws.onopen = function () 
+      {
+        ws.send(JSON.stringify({
+          status: "Connected",
+          pathname: '/home'
+        }));
+        // const get_count = async() =>{
+        //       const [rows, fields]  = await pool.execute('SELECT COUNT(*) AS `countopen` FROM `trangthai` WHERE status = "open"');
+        //       console.log(rows);
+        // }
+        // get_count();
         let myChart = document.getElementById('myChart').getContext('2d');
         // Global Options
         Chart.defaults.global.defaultFontFamily = 'Lato';
@@ -79,56 +127,6 @@
             }
           }
         });
-      </script>
-      <div class="container">
-        <canvas id="myChart"></canvas>
-      </div>
-      <div>
-        <table class="w3-table-all w3-hoverable">
-          <thead>
-            <tr class="w3-light-gray">
-              <th>ID</th>
-              <th>Status</th>
-              <th>Time</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% for(let i=0; i < data.length; i++) { %>
-              <tr>
-                <td><%= data[i].id %></td>
-                <td><%= data[i].status %></td>
-                <td><%= data[i].time %></td>
-                <td>
-                  <form action="/delete-status" , method="post">
-                    <input
-                      type="text"
-                      hidden
-                      value="<%= data[i].id %>"
-                      name="statusId"
-                    />
-                    <button type="submit" class="btn-CRUD">Delete</button>
-                  </form>
-                </td>
-            </tr>
-            <% } %>
-          </tbody>
-    </div>
-
-    <script type="text/javascript">
-      var url = "ahkiot.herokuapp.com"; 
-      var ws = new WebSocket("wss://" + url); 
-      ws.onopen = function () 
-      {
-        ws.send(JSON.stringify({
-          status: "Connected",
-          pathname: '/home'
-        }));
-        // const get_count = async() =>{
-        //       const [rows, fields]  = await pool.execute('SELECT COUNT(*) AS `countopen` FROM `trangthai` WHERE status = "open"');
-        //       console.log(rows);
-        // }
-        // get_count();
       };
 
       ws.onclose = function () {
