@@ -6,7 +6,7 @@ const getHomePage = async (req, res) => {
     if (req.session.daDangNhap) {
         console.log(req.session.username);
         console.log(count);
-        return res.render('index.ejs', { data: rows }, {data: count});
+        return res.render('index.ejs', { data: rows }, {r: count});
     }
     else {       
         res.redirect("/sign-in");
