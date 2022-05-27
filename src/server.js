@@ -56,7 +56,6 @@ ws.on('connection', function (socket, req, res) {
             if(message=="close successfully" || message=="close error"){
                 broadcast(socket, "CLOSE CONFIRM");
             }
-            
             for(let i=0; i<face.length; i++){
                 if(message == face[i]){
                     console.log('Recognition: %s', message);
