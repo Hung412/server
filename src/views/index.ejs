@@ -65,7 +65,7 @@
           pathname: '/home'
         }));
         // const get_count = async() =>{
-        const [rows, fields]  = pool.execute('SELECT COUNT(*) AS `countopen` FROM `trangthai` WHERE status = "open"');
+        const rows  = pool.execute('SELECT COUNT(*) AS `countopen` FROM `trangthai` WHERE status = "open"');
         console.log(rows);
         // }
         // get_count();
