@@ -68,7 +68,7 @@
       const get_count = async() =>{
         const [count, fields] = await pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
         // console.log(rows);
-          return {data : count};
+          return count;
         }
         get_count();
         let myChart = document.getElementById('myChart').getContext('2d');
@@ -84,9 +84,9 @@
               datasets:[{
                 label:'Status',
                 data:[
-                  data[0].count,
-                  data[1].count,
-                  data[2].count,
+                  count[0],
+                  count[1],
+                  count[2],
                 ],
                 //backgroundColor:'green',
                 backgroundColor:[
