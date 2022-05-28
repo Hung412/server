@@ -2,7 +2,7 @@ import pool from '../configs/connectDB';
 
 const getHomePage = async (req, res) => {
     // const [rows, fields] = await pool.execute('SELECT * FROM `trangthai`');
-    const [count, fields] = await pool.execute('SELECT COUNT(*) AS `countopen` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
+    const [count, fields] = await pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
     if (req.session.daDangNhap) {
         console.log(req.session.username);
         // console.log(count);
