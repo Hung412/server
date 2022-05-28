@@ -45,6 +45,7 @@ function broadcast(socket, data) {
 ws.on('connection', function (socket, req, res) {
     clients.push(socket);
     socket.on('message', function (message) {
+        console.log(message.length);
         const get_data = async() =>{
             const [rows, fields]  = await pool.execute(`SELECT * FROM nguoidung`);
             const face = [];
