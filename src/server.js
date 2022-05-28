@@ -60,7 +60,6 @@ ws.on('connection', function (socket, req, res) {
             if(message=="close successfully" || message=="close error"){
                 broadcast(socket, "CLOSE CONFIRM");
             }
-            if(message.length == 22 && rows[i])
             for(let i=0; i<face.length; i++){
                 if(message == face[i] && rows[i].quyenhan == 1){
                     console.log('Recognition: %s', message);
