@@ -66,6 +66,44 @@ ws.on('connection', function (socket, req, res) {
             }
         }
         get_data();
+
+        if (message == "open successfully" && temp == 0) {
+
+            pool.query("INSERT INTO trangthai (status) VALUES ('open')", function (err, result) {
+
+                if (err) throw err;
+
+                console.log('Insert data open successfully');
+            });
+
+            temp = 1;
+            tempError = 1;
+
+        }
+        else if (message == "close successfully" && temp == 1) {
+
+            pool.query("INSERT INTO trangthai (status) VALUES ('close')", function (err, result) {
+
+                if (err) throw err;
+
+                console.log('Insert data close successfully');
+            });
+
+            temp = 0;
+            tempError = 1; 
+        }
+        else if ((message == "open error" || message == "close error") && tempError == 1) {
+
+            pool.query("INSERT INTO trangthai (status) VALUES ('error')", function (err, result) {
+
+                if (err) throw err;
+
+                console.log('Insert data error successfully');
+            }); 
+
+            tempError = 0;
+        }
+
     });
 
     socket.on('close', function () {
