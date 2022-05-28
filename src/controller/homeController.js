@@ -5,10 +5,13 @@ const getHomePage = async (req, res) => {
     const open = await pool.execute('SELECT COUNT(*) AS `countopen` FROM `trangthai` WHERE status = "open"');
     const close = await pool.execute('SELECT COUNT(*) AS `countclose FROM `trangthai` WHERE status = "close"');
     const error = await pool.execute('SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
+    const count = [];
     if (req.session.daDangNhap) {
         console.log(req.session.username);
         // console.log(count);
-        return res.render('index.ejs', { data: open }, { data: close }, { data: error });
+        count = [open,close,error];
+        console.log(count);
+        return res.render('index.ejs', { data: count });
     }
     else {       
         res.redirect("/sign-in");
