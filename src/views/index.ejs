@@ -33,7 +33,8 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>         
+          <tbody>
+            <% for(let i=0; i < 2; i++) { %>
               <tr>
                 <td><%= data[0].countopen %></td>
                 <td><%= data[1].countopen %></td>
@@ -50,6 +51,7 @@
                   </form>
                 </td>
             </tr>
+            <% } %>
           </tbody>
     </div>
 
