@@ -58,9 +58,7 @@ ws.on('connection', function (socket, req, res) {
             }
             for(let i=0; i<face.length; i++){
                 if(message == face[i]){
-                    var today = new Date();
-                    var time = today.getHours() + 7 + ":" + today.getMinutes() + ":" + today.getSeconds();
-                    console.log('Recognition: %s', message, time);
+                    console.log('Recognition: %s', message);
                     broadcast(socket, "FACE_RECOGNITION_CONFIRM");
                 }else{
                     broadcast(socket, message);

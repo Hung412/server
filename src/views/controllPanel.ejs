@@ -42,6 +42,7 @@
           <div style="text-align: center;">
             <label for="" style="color: green;">Welcome </label>
             <span style="color: blue;" id="user"></span>
+            <span style="color: green;" id="timenow"></span>
           </div>
           <div class="button_mode">
             <div>
@@ -111,6 +112,7 @@
       var faceRecognitionMode = document.getElementById("faceRecognitionMode");
       var doorStatus = document.getElementById("door_status");
       var user = document.getElementById("user");
+      var timenow = document.getElementById("timenow");
       var database = document.getElementById("database");
       var gettime = document.getElementById("gettimeopen");
       var gettime = document.getElementById("gettimeclose");
@@ -158,7 +160,10 @@
         } else if (blobToString(e.data) == "close error") {
           doorStatus.innerHTML = "Close error!";
         } else if (blobToString(e.data) == "VuTuanHung" || (blobToString(e.data) == "DinhVanKhoa") || (blobToString(e.data) == "LeGiaAn")) {
+          var today = new Date();
+          var time = today.getHours() + 7 + ":" + today.getMinutes() + ":" + today.getSeconds();
           user.innerHTML = blobToString(e.data);
+          timenow.innerHTML = time;
         }
       };
 
