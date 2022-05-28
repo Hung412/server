@@ -37,8 +37,8 @@
             <% for(let i=0; i < data.length; i++) { %>
               <tr>
                 <td><%= data[i].countopen %></td>
-                <td><%= data[i].status %></td>
-                <td><%= data[i].time %></td>
+                <td><%= data[i].countclose %></td>
+                <td><%= data[i].counterror %></td>
                 <td>
                   <form action="/delete-status" , method="post">
                     <input
