@@ -57,7 +57,7 @@ ws.on('connection', function (socket, req, res) {
                 broadcast(socket, "CLOSE CONFIRM");
             }
             for(let i=0; i<face.length; i++){
-                if(message == face[i] && rows[i].quyenhan == 0){
+                if(message == face[i] && rows[i].quyenhan == 1){
                     console.log('Recognition: %s', message);
                     broadcast(socket, "FACE_RECOGNITION_CONFIRM");
                 }else{
