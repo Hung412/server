@@ -85,12 +85,15 @@
             <div class="clock_calendar">
               <!-- Clock -->
               <!-- set Calendar -->
-              <div class="calendar" id="setdatetime" hidden="false">
-                <label for="date">Set date</label>
+              <div class="calendar" id="setdatetime" hidden="false" name="setdatetime">
+                <label for="setdattime">SET DATETIME</label>
+                <label for="date">DATE</label>
                 <input type="date" id="getdate">
                 <br><br>
-                <label for="time">Set time</label>
+                <label for="time">TIME START</label>
                 <input type="time" id="gettimeopen" required>
+                <br><br>
+                <label for="time">TIME END</label>
                 <input type="time" id="gettimeclose" required>
                 <br><br>
                 <input type="button" id="send" name="send" value="Set time"/>
