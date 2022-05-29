@@ -189,9 +189,6 @@
           faceRecognitionMode.disabled = true;
         }
       };
-      if(Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false){
-        faceRecognitionMode.disabled = true;
-      }
       faceRecognitionMode.onchange = function () {
         if (faceRecognitionMode.checked == true) {
           ws.send("FACE_RECOGNITION_ON");
@@ -204,6 +201,9 @@
         }
       };
       send.onclick = function () {   
+        if(Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false){
+        faceRecognitionMode.disabled = true;
+      }
         // setdate = getdate.value;
         // timeopen = gettimeopen.value;
         // timeclose = gettimeclose.value;
