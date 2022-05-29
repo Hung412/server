@@ -51,9 +51,9 @@ ws.on('connection', function (socket, req, res) {
             const face = [];
             for(let i=0; i<rows.length; i++){
                 face.push(rows[i].name);
-                if(message.length == 22 && rows[i].quyenhan == 0){
-                    console.log(message);
-                }
+                // if(message.length == 22 && rows[i].quyenhan == 0){
+                //     console.log(message);
+                // }
             }
             console.log(face);
             console.log('Message: %s', message);
@@ -61,12 +61,15 @@ ws.on('connection', function (socket, req, res) {
                 broadcast(socket, "CLOSE CONFIRM");
             }
             for(let i=0; i<face.length; i++){
-                if(message == face[i] && rows[i].quyenhan == 1){
+                if(message == face[i]){
                     console.log('Recognition: %s', message);
                     broadcast(socket, "FACE_RECOGNITION_CONFIRM");
-                }else{
-                    broadcast(socket, message);
+                }else if(message.length == 22 && rows[i].quyenhan == 1){
+                    broadcast(socket, "SUPER_USER");
                 }
+                else{
+                    broadcast(socket, message);
+                }  
             }
         }
         get_data();
