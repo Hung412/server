@@ -56,6 +56,9 @@
     </div>
 
     <script type="text/javascript">
+      import pool from '../configs/connectDB';
+      const count = pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
+        // console.log(rows);
       var url = "ahkiot.herokuapp.com"; 
       var ws = new WebSocket("wss://" + url); 
       ws.onopen = function () 
@@ -65,9 +68,6 @@
           pathname: '/home'
         }));
       };
-        import pool from './configs/connectDB';
-        const count = pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
-        // console.log(rows);
         let myChart = document.getElementById('myChart').getContext('2d');
           // Global Options
           Chart.defaults.global.defaultFontFamily = 'Lato';
