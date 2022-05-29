@@ -173,10 +173,12 @@
           ws.send("MANUAL_ON");
           autoMode.disabled = true;
           faceRecognitionMode.disabled = true;
+          setdatetime.hidden = true;
         } else {
           ws.send("MANUAL_OFF");
           autoMode.disabled = false;
           faceRecognitionMode.disabled = true;
+          setdatetime.hidden = true;
         }
       };
       autoMode.onchange = function () {
@@ -184,10 +186,12 @@
           ws.send("AUTO_ON");
           manualMode.disabled = true;
           faceRecognitionMode.disabled = true;
+          setdatetime.hidden = true;
         } else {
           ws.send("AUTO_OFF");
           manualMode.disabled = false;
           faceRecognitionMode.disabled = true;
+          setdatetime.hidden = true;
         }
       };
       // faceRecognitionMode.onclick = function () {
