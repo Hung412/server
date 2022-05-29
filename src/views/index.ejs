@@ -59,7 +59,7 @@
     <script type="text/javascript">
       var url = "ahkiot.herokuapp.com"; 
       var ws = new WebSocket("wss://" + url); 
-      import pool from './configs/connectDB';
+      import pool from '../configs/connectDB';
 
       const get_count = async() =>{
         const [count, fields] = await pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
