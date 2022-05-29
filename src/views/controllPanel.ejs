@@ -189,11 +189,14 @@
           faceRecognitionMode.disabled = true;
         }
       };
-      faceRecognitionMode.onchange = function () {
+      faceRecognitionMode.onclick = function () {
         if (Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false) {
           alert("Please set datetime");
           faceRecognitionMode.disabled = true;
-        } else if(faceRecognitionMode.checked == true) {
+        } 
+      }
+      faceRecognitionMode.onchange = function () {
+        if(faceRecognitionMode.checked == true) {
           ws.send("FACE_RECOGNITION_ON");
           manualMode.disabled = true;
           autoMode.disabled = true;
