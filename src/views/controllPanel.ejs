@@ -202,7 +202,6 @@
       // }
       faceRecognitionMode.onchange = function () {
         if(faceRecognitionMode.checked == true) {
-          ws.send("FACE_RECOGNITION_ON");
           manualMode.disabled = true;
           autoMode.disabled = true;
           setdatetime.hidden = false;
@@ -213,18 +212,10 @@
           setdatetime.hidden = true;
         }
       };
-      // if(Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false){
-      //   faceRecognitionMode.disabled = true;
-      // }
       send.onclick = function () {   
-        // if(Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false){
-        //   faceRecognitionMode.disabled = true;
-        // }
-        // setdate = getdate.value;
-        // timeopen = gettimeopen.value;
-        // timeclose = gettimeclose.value;
         clock = [getdate.value,gettimeopen.value,gettimeclose.value]
         ws.send(clock);
+        ws.send("FACE_RECOGNITION_ON");
         // ws.send("close: " + gettimeclose.value);
       };
 
