@@ -65,12 +65,12 @@
           pathname: '/home'
         }));
       };
-      const get_count = async() =>{
-        const [count, fields] = await pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
-        // console.log(rows);
-          return count;
-        }
-        get_count();
+      // const get_count = async() =>{
+      //   const [count, fields] = await pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
+      //   // console.log(rows);
+      //     return count;
+      //   }
+      //   get_count();
         // let myChart = document.getElementById('myChart').getContext('2d');
         //   // Global Options
         //   Chart.defaults.global.defaultFontFamily = 'Lato';
