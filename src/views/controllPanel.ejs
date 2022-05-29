@@ -190,7 +190,12 @@
         }
       };
       faceRecognitionMode.onchange = function () {
-        if (faceRecognitionMode.checked == true) {
+        if (faceRecognitionMode.checked == true && (Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false)) {
+          alert("Please set datetime");
+          ws.send("FACE_RECOGNITION_ON");
+          manualMode.disabled = true;
+          autoMode.disabled = true;
+        } else if(faceRecognitionMode.checked == true) {
           ws.send("FACE_RECOGNITION_ON");
           manualMode.disabled = true;
           autoMode.disabled = true;
@@ -200,10 +205,13 @@
           autoMode.disabled = false;
         }
       };
-      send.onclick = function () {   
-        if(Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false){
+      if(Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false){
         faceRecognitionMode.disabled = true;
       }
+      send.onclick = function () {   
+        if(Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false){
+          faceRecognitionMode.disabled = true;
+        }
         // setdate = getdate.value;
         // timeopen = gettimeopen.value;
         // timeclose = gettimeclose.value;
