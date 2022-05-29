@@ -192,9 +192,6 @@
       faceRecognitionMode.onchange = function () {
         if (faceRecognitionMode.checked == true && (Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false)) {
           alert("Please set datetime");
-          ws.send("FACE_RECOGNITION_ON");
-          manualMode.disabled = true;
-          autoMode.disabled = true;
         } else if(faceRecognitionMode.checked == true) {
           ws.send("FACE_RECOGNITION_ON");
           manualMode.disabled = true;
