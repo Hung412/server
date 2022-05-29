@@ -177,7 +177,7 @@
         } else {
           ws.send("MANUAL_OFF");
           autoMode.disabled = false;
-          faceRecognitionMode.disabled = true;
+          faceRecognitionMode.disabled = false;
           setdatetime.hidden = true;
         }
       };
@@ -190,7 +190,7 @@
         } else {
           ws.send("AUTO_OFF");
           manualMode.disabled = false;
-          faceRecognitionMode.disabled = true;
+          faceRecognitionMode.disabled = false;
           setdatetime.hidden = true;
         }
       };
