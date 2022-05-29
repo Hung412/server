@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="../configs/connectDB.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <title>Home</title>
   </head>
   <body>
@@ -56,11 +57,15 @@
     </div>
 
     <script type="text/javascript">
-      import pool from '../configs/connectDB';
-      const count = pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
-        // console.log(rows);
       var url = "ahkiot.herokuapp.com"; 
       var ws = new WebSocket("wss://" + url); 
+      import pool from './configs/connectDB';
+
+      const get_count = async() =>{
+        const [count, fields] = await pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
+          console.log(count);
+          return count;
+        }
       ws.onopen = function () 
       {
         ws.send(JSON.stringify({
@@ -68,6 +73,7 @@
           pathname: '/home'
         }));
       };
+        get_count();
         let myChart = document.getElementById('myChart').getContext('2d');
           // Global Options
           Chart.defaults.global.defaultFontFamily = 'Lato';
