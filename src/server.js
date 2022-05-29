@@ -78,7 +78,7 @@ ws.on('connection', function (socket, req, res) {
 
         if (message == "open successfully" && temp == 0) {
 
-            pool.execute("INSERT INTO trangthai (status) VALUES ('open')", function (err, result) {
+            pool.query("INSERT INTO trangthai (status) VALUES ('open')", function (err, result) {
 
                 if (err) throw err;
 
@@ -91,7 +91,7 @@ ws.on('connection', function (socket, req, res) {
         }
         else if (message == "close successfully" && temp == 1) {
 
-            pool.execute("INSERT INTO trangthai (status) VALUES ('close')", function (err, result) {
+            pool.query("INSERT INTO trangthai (status) VALUES ('close')", function (err, result) {
 
                 if (err) throw err;
 
@@ -103,7 +103,7 @@ ws.on('connection', function (socket, req, res) {
         }
         else if ((message == "open error" || message == "close error") && tempError == 1) {
 
-            pool.execute("INSERT INTO trangthai (status) VALUES ('error')", function (err, result) {
+            pool.query("INSERT INTO trangthai (status) VALUES ('error')", function (err, result) {
 
                 if (err) throw err;
 
