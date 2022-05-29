@@ -7,6 +7,8 @@ import pool from './configs/connectDB';
 
 require('dotenv').config();
 const PORT = process.env.PORT || 3000
+var temp = 0;
+var tempError = 0;
 
 // create http server
 const app = express();
