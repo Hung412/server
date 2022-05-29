@@ -175,7 +175,7 @@
         } else {
           ws.send("MANUAL_OFF");
           autoMode.disabled = false;
-          faceRecognitionMode.disabled = false;
+          faceRecognitionMode.disabled = true;
         }
       };
       autoMode.onchange = function () {
@@ -186,7 +186,7 @@
         } else {
           ws.send("AUTO_OFF");
           manualMode.disabled = false;
-          faceRecognitionMode.disabled = false;
+          faceRecognitionMode.disabled = true;
         }
       };
       if(Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false){
