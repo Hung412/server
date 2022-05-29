@@ -10,7 +10,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="../configs/connectDB.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <title>Home</title>
   </head>
   <body>
@@ -66,133 +65,69 @@
           pathname: '/home'
         }));
       };
-      // const get_count = async() =>{
-      //   const [count, fields] = await pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
-      //   // console.log(rows);
-      //     return count;
-      //   }
-      //   get_count();
-        // let myChart = document.getElementById('myChart').getContext('2d');
-        //   // Global Options
-        //   Chart.defaults.global.defaultFontFamily = 'Lato';
-        //   Chart.defaults.global.defaultFontSize = 18;
-        //   Chart.defaults.global.defaultFontColor = '#777';
-        //   for(let i=0; i<1 ; i++){
-        //     let massPopChart = new Chart(myChart, {
-        //     type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-        //     data:{
-        //       labels:['Open', 'Close', 'Error'],
-        //       datasets:[{
-        //         label:'Status',
-        //         data:[
-        //           count[0],
-        //           count[1],
-        //           count[2],
-        //         ],
-        //         //backgroundColor:'green',
-        //         backgroundColor:[
-        //           'rgba(255, 99, 132, 0.6)',
-        //           'rgba(54, 162, 235, 0.6)',
-        //           'rgba(255, 206, 86, 0.6)',
-        //           'rgba(75, 192, 192, 0.6)',
-        //           'rgba(153, 102, 255, 0.6)',
-        //           'rgba(255, 159, 64, 0.6)',
-        //           'rgba(255, 99, 132, 0.6)'
-        //         ],
-        //         borderWidth:1,
-        //         borderColor:'#777',
-        //         hoverBorderWidth:3,
-        //         hoverBorderColor:'#000'
-        //       }]
-        //     },
-        //     options:{
-        //       title:{
-        //         display:true,
-        //         text:'Status Chart',
-        //         fontSize:25
-        //       },
-        //       legend:{
-        //         display:true,
-        //         position:'right',
-        //         labels:{
-        //           fontColor:'#000'
-        //         }
-        //       },
-        //       layout:{
-        //         padding:{
-        //           left:50,
-        //           right:0,
-        //           bottom:0,
-        //           top:0
-        //         }
-        //       },
-        //       tooltips:{
-        //         enabled:true
-        //       }
-        //     }
-        //   });
-        // }
-
-
-        window.onload = function() {
-          const getChart = async () => {
-        // const [rows, fields] = await pool.execute('SELECT * FROM `trangthai`');
-          const [count, fields] = await pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
-          for(let i=0; i < 1; i++){
-            var chart = new CanvasJS.Chart("chartContainer", {
-              animationEnabled: true,
-              theme: "light2",
-              title: {
-                text: "Biểu đồ tần suất đóng mở cửa theo ngày"
-              },
-              axisY: {
-                includeZero: true
-              },
-              legend: {
-                cursor: "pointer",
-                verticalAlign: "center",
-                horizontalAlign: "right",
-                itemclick: toggleDataSeries
-              },
-              data: [{
-                type: "spline",
-                legendText: "open",
-                name: "series1",
-                indexLabel: "{y}",
-                yValueFormatString: "#0.##",
-                showInLegend: true,
-                dataPoints: count[0]
-              }, {
-                type: "spline",
-                legendText: "close",
-                name: "series2",
-                indexLabel: "{y}",
-                yValueFormatString: "#0.##",
-                showInLegend: true,
-                dataPoints: count[1]
-              }, {
-                type: "spline",
-                legendText: "error",
-                name: "series3",
-                indexLabel: "{y}",
-                yValueFormatString: "#0.##",
-                showInLegend: true,
-                dataPoints: count[2]
+        import pool from './configs/connectDB';
+        const count = pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
+        // console.log(rows);
+        let myChart = document.getElementById('myChart').getContext('2d');
+          // Global Options
+          Chart.defaults.global.defaultFontFamily = 'Lato';
+          Chart.defaults.global.defaultFontSize = 18;
+          Chart.defaults.global.defaultFontColor = '#777';
+          for(let i=0; i<1 ; i++){
+            let massPopChart = new Chart(myChart, {
+            type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            data:{
+              labels:['Open', 'Close', 'Error'],
+              datasets:[{
+                label:'Status',
+                data:[
+                  count[0],
+                  count[1],
+                  count[2],
+                ],
+                //backgroundColor:'green',
+                backgroundColor:[
+                  'rgba(255, 99, 132, 0.6)',
+                  'rgba(54, 162, 235, 0.6)',
+                  'rgba(255, 206, 86, 0.6)',
+                  'rgba(75, 192, 192, 0.6)',
+                  'rgba(153, 102, 255, 0.6)',
+                  'rgba(255, 159, 64, 0.6)',
+                  'rgba(255, 99, 132, 0.6)'
+                ],
+                borderWidth:1,
+                borderColor:'#777',
+                hoverBorderWidth:3,
+                hoverBorderColor:'#000'
               }]
-            });
-            chart.render();
-
-            function toggleDataSeries(e) {
-              if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                e.dataSeries.visible = false;
-              } else {
-                e.dataSeries.visible = true;
+            },
+            options:{
+              title:{
+                display:true,
+                text:'Status Chart',
+                fontSize:25
+              },
+              legend:{
+                display:true,
+                position:'right',
+                labels:{
+                  fontColor:'#000'
+                }
+              },
+              layout:{
+                padding:{
+                  left:50,
+                  right:0,
+                  bottom:0,
+                  top:0
+                }
+              },
+              tooltips:{
+                enabled:true
               }
-              chart.render();
             }
-          }    
+          });
         }
-      }
       ws.onclose = function () {
         alert("Server destroyed!");
       };
