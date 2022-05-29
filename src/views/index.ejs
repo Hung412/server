@@ -160,7 +160,7 @@
                 indexLabel: "{y}",
                 yValueFormatString: "#0.##",
                 showInLegend: true,
-                dataPoints: data[0].count 
+                dataPoints: count[0]
               }, {
                 type: "spline",
                 legendText: "close",
@@ -168,7 +168,7 @@
                 indexLabel: "{y}",
                 yValueFormatString: "#0.##",
                 showInLegend: true,
-                dataPoints: data[1].count
+                dataPoints: count[1]
               }, {
                 type: "spline",
                 legendText: "error",
@@ -176,7 +176,7 @@
                 indexLabel: "{y}",
                 yValueFormatString: "#0.##",
                 showInLegend: true,
-                dataPoints: data[2].count
+                dataPoints: count[2]
               }]
             });
             chart.render();
