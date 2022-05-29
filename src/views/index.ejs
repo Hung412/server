@@ -134,59 +134,62 @@
 
 
         window.onload = function() {
-        for(let i=0; i < 1; i++){
-          var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            theme: "light2",
-            title: {
-              text: "Biểu đồ tần suất đóng mở cửa theo ngày"
-            },
-            axisY: {
-              includeZero: true
-            },
-            legend: {
-              cursor: "pointer",
-              verticalAlign: "center",
-              horizontalAlign: "right",
-              itemclick: toggleDataSeries
-            },
-            data: [{
-              type: "spline",
-              legendText: "open",
-              name: "series1",
-              indexLabel: "{y}",
-              yValueFormatString: "#0.##",
-              showInLegend: true,
-              dataPoints: data[0].count
-            }, {
-              type: "spline",
-              legendText: "close",
-              name: "series2",
-              indexLabel: "{y}",
-              yValueFormatString: "#0.##",
-              showInLegend: true,
-              dataPoints: data[1].count
-            }, {
-              type: "spline",
-              legendText: "error",
-              name: "series3",
-              indexLabel: "{y}",
-              yValueFormatString: "#0.##",
-              showInLegend: true,
-              dataPoints: data[2].count
-            }]
-          });
-          chart.render();
-
-          function toggleDataSeries(e) {
-            if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-              e.dataSeries.visible = false;
-            } else {
-              e.dataSeries.visible = true;
-            }
+          const getChart = async () => {
+        // const [rows, fields] = await pool.execute('SELECT * FROM `trangthai`');
+          const [count, fields] = await pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
+          for(let i=0; i < 1; i++){
+            var chart = new CanvasJS.Chart("chartContainer", {
+              animationEnabled: true,
+              theme: "light2",
+              title: {
+                text: "Biểu đồ tần suất đóng mở cửa theo ngày"
+              },
+              axisY: {
+                includeZero: true
+              },
+              legend: {
+                cursor: "pointer",
+                verticalAlign: "center",
+                horizontalAlign: "right",
+                itemclick: toggleDataSeries
+              },
+              data: [{
+                type: "spline",
+                legendText: "open",
+                name: "series1",
+                indexLabel: "{y}",
+                yValueFormatString: "#0.##",
+                showInLegend: true,
+                dataPoints: data[0].count 
+              }, {
+                type: "spline",
+                legendText: "close",
+                name: "series2",
+                indexLabel: "{y}",
+                yValueFormatString: "#0.##",
+                showInLegend: true,
+                dataPoints: data[1].count
+              }, {
+                type: "spline",
+                legendText: "error",
+                name: "series3",
+                indexLabel: "{y}",
+                yValueFormatString: "#0.##",
+                showInLegend: true,
+                dataPoints: data[2].count
+              }]
+            });
             chart.render();
-          }
 
+            function toggleDataSeries(e) {
+              if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+              } else {
+                e.dataSeries.visible = true;
+              }
+              chart.render();
+            }
+          }    
         }
       }
       ws.onclose = function () {
