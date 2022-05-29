@@ -174,7 +174,7 @@
       manualMode.onchange = function () {
         if (manualMode.checked == true) {
           ws.send("MANUAL_ON");
-          ws.send("close successfully");
+          ws.send("open successfully");
           autoMode.disabled = true;
           faceRecognitionMode.disabled = true;
           setdatetime.hidden = true;
