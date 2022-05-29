@@ -114,8 +114,8 @@
       var user = document.getElementById("user");
       var timenow = document.getElementById("timenow");
       var database = document.getElementById("database");
-      var gettime = document.getElementById("gettimeopen");
-      var gettime = document.getElementById("gettimeclose");
+      var gettimeopen = document.getElementById("gettimeopen");
+      var gettimeclose = document.getElementById("gettimeclose");
       var getdate = document.getElementById("getdate");
       var send = document.getElementById("send");
 
@@ -190,7 +190,7 @@
         }
       };
       faceRecognitionMode.onchange = function () {
-        if (faceRecognitionMode.checked == true && (Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false)) {
+        if (Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false) {
           alert("Please set datetime");
           faceRecognitionMode.disabled = true;
         } else if(faceRecognitionMode.checked == true) {
