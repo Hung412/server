@@ -64,7 +64,7 @@
       const get_count = async() =>{
         const [count, fields] = await pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
           console.log(count);
-          return count;
+          return { data: count };
         }
       ws.onopen = function () 
       {
