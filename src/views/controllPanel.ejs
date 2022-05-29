@@ -189,7 +189,7 @@
           faceRecognitionMode.disabled = false;
         }
       };
-      if(getdate.value || gettimeopen.value || gettimeclose.value){
+      if(Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false){
         faceRecognitionMode.disabled = true;
       }
       faceRecognitionMode.onchange = function () {
