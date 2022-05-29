@@ -64,7 +64,7 @@ ws.on('connection', function (socket, req, res) {
                 if(message == face[i]){
                     console.log('Recognition: %s', message);
                     broadcast(socket, "FACE_RECOGNITION_CONFIRM");
-                }else if(message.length == 22 && rows[i].quyenhan == 1){
+                }else if(rows[i].quyenhan == 1){
                     broadcast(socket, "SUPER_USER");
                 }
                 else{

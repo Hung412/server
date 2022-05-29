@@ -189,6 +189,9 @@
           faceRecognitionMode.disabled = false;
         }
       };
+      if(getdate.value || gettimeopen || gettimeclose){
+        faceRecognitionMode.disabled = true;
+      }
       faceRecognitionMode.onchange = function () {
         if (faceRecognitionMode.checked == true) {
           ws.send("FACE_RECOGNITION_ON");
