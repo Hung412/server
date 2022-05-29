@@ -91,7 +91,7 @@
           <div class="clock_calendar">
             <!-- Clock -->
             <!-- set Calendar -->
-            <div class="calendar">
+            <div class="calendar" id="setdatetime">
               <label for="date">Set date</label>
               <input type="date" id="getdate">
               <br><br>
@@ -118,6 +118,7 @@
       var gettimeclose = document.getElementById("gettimeclose");
       var getdate = document.getElementById("getdate");
       var send = document.getElementById("send");
+      var setdatetime = document.getElementById("setdatetime");
 
       var url = "ahkiot.herokuapp.com"; // hàm trả về url của trang hiện tại kèm theo port
       var ws = new WebSocket("wss://" + url); // mở 1 websocket với port 3000
@@ -200,14 +201,12 @@
           ws.send("FACE_RECOGNITION_ON");
           manualMode.disabled = true;
           autoMode.disabled = true;
+          setdatetime.hidden = false;
         } else {
           ws.send("FACE_RECOGNITION_OFF");
           manualMode.disabled = false;
           autoMode.disabled = false;
-          getdate.hidden = true;
-          gettimeopen.hidden = true;
-          gettimeclose.hidden = true;
-          send.hidden = true;
+          setdatetime.hidden = true;
         }
       };
       // if(Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false){
