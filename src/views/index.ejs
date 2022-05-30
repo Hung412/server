@@ -35,11 +35,11 @@
             </tr>
           </thead>
           <tbody>
-            <% for(let i=0; i < countstatus.length; i++) { %>
+            <% for(let i=0; i < data.length; i++) { %>
               <tr>
-                <td><%= countstatus[0] %></td>
-                <td><%= countstatus[1] %></td>
-                <td><%= countstatus[2] %></td>
+                <td><%= data[0].countstatus %></td>
+                <td><%= data[1].countstatus %></td>
+                <td><%= data[2].countstatus %></td>
                 <td>
                   <form action="/delete-status" , method="post">
                     <input
