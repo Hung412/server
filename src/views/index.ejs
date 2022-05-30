@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="../configs/connectDB.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <title>Home</title>
   </head>
   <body>
@@ -22,7 +22,7 @@
     <div class="w3-container">
       <h2>Status table</h2>
       <div class="container">
-        <canvas id="myChart"></canvas>
+        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
       </div>
       <div>
         <table class="w3-table-all w3-hoverable">
@@ -59,6 +59,20 @@
     <script type="text/javascript">
       var url = "ahkiot.herokuapp.com"; 
       var ws = new WebSocket("wss://" + url); 
+      var xValues = ["Open", "Close", "Error"];
+      var yValues = [countstatus[0], countstatus[1], countstatus[2]];
+      var barColors = ["green", "blue","red"];
+      new Chart("myChart", {
+      type: "bar",
+      data: {
+          labels: xValues,
+          datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+          }]
+      },
+      options: {}
+      });
 
       ws.onopen = function () 
       {

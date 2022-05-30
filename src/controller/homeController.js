@@ -1,5 +1,4 @@
 import pool from '../configs/connectDB';
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 // const getHomePage = async (req, res) => {
 //     const [rows, fields] = await pool.execute('SELECT * FROM `trangthai` ORDER BY `timestatus` DESC');
@@ -18,26 +17,9 @@ const getHomePage = async(req, res) =>{
     const countstatus = [];
     if (req.session.daDangNhap) {
         //Chart
-        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-
         for(let i=0; i<count.length; i++){
             countstatus.push(count[i].countstatus);
         }
-        var xValues = ["Open", "Close", "Error"];
-        var yValues = [countstatus[0], countstatus[1], countstatus[2]];
-        var barColors = ["green", "blue","red"];
-
-        new Chart("myChart", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-            backgroundColor: barColors,
-            data: yValues
-            }]
-        },
-        options: {}
-        });
         //end chart
         console.log(countstatus);
         console.log(req.session.fullname);
