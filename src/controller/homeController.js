@@ -1,4 +1,5 @@
 import pool from '../configs/connectDB';
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 // const getHomePage = async (req, res) => {
 //     const [rows, fields] = await pool.execute('SELECT * FROM `trangthai` ORDER BY `timestatus` DESC');
@@ -17,66 +18,25 @@ const getHomePage = async(req, res) =>{
     const countstatus = [];
     if (req.session.daDangNhap) {
         //Chart
+        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+
         for(let i=0; i<count.length; i++){
             countstatus.push(count[i].countstatus);
         }
-        let myChart = document.getElementById('myChart').getContext('2d');
-        // Global Options
-        Chart.defaults.global.defaultFontFamily = 'Lato';
-        Chart.defaults.global.defaultFontSize = 18;
-        Chart.defaults.global.defaultFontColor = '#777';
-        let massPopChart = new Chart(myChart, {
-        type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-        data:{
-            labels:['Open', 'Close', 'Error'],
-            datasets:[{
-            label:'Status',
-            data:[
-                countstatus[0],
-                countstatus[1],
-                countstatus[2],
-            ],
-            //backgroundColor:'green',
-            backgroundColor:[
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 206, 86, 0.6)',
-                'rgba(75, 192, 192, 0.6)',
-                'rgba(153, 102, 255, 0.6)',
-                'rgba(255, 159, 64, 0.6)',
-                'rgba(255, 99, 132, 0.6)'
-            ],
-            borderWidth:1,
-            borderColor:'#777',
-            hoverBorderWidth:3,
-            hoverBorderColor:'#000'
+        var xValues = ["Open", "Close", "Error"];
+        var yValues = [countstatus[0], countstatus[1], countstatus[2]];
+        var barColors = ["green", "blue","red"];
+
+        new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+            backgroundColor: barColors,
+            data: yValues
             }]
         },
-        options:{
-            title:{
-            display:true,
-            text:'Status Chart',
-            fontSize:25
-            },
-            legend:{
-            display:true,
-            position:'right',
-            labels:{
-                fontColor:'#000'
-            }
-            },
-            layout:{
-            padding:{
-                left:50,
-                right:0,
-                bottom:0,
-                top:0
-            }
-            },
-            tooltips:{
-            enabled:true
-            }
-        }
+        options: {}
         });
         //end chart
         console.log(countstatus);
