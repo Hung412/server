@@ -35,7 +35,7 @@
             </tr>
           </thead>
           <tbody>
-            <% for(let i=0; i < data.length; i++) { %>
+            <% for(let i=0; i < 1; i++) { %>
               <tr>
                 <td><%= data[0].countstatus %></td>
                 <td><%= data[1].countstatus %></td>
@@ -60,7 +60,7 @@
       var url = "ahkiot.herokuapp.com"; 
       var ws = new WebSocket("wss://" + url); 
       var xValues = ["Open", "Close", "Error"];
-      var yValues = [countstatus[0], countstatus[1], countstatus[2]];
+      var yValues = [data[0].countstatus, data[1].countstatus, data[2].countstatus];
       var barColors = ["green", "blue","red"];
       new Chart("myChart", {
       type: "bar",
