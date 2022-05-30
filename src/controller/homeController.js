@@ -41,7 +41,7 @@ const getControllPanelPage = (req, res) => {
 const postDeleteStatus = async (req, res) => {
     console.log("Check request: ", req.body);
     await pool.execute(`SELECT * FROM trangthai WHERE timestatus BETWEEN CURRENT_DATE - 2 AND CURRENT_DATE`)
-    return res.redirect('/home');
+    return res.redirect('/home-data');
 }
 const showSigninForm = async (req, res) => {
     res.render('signin.ejs');
