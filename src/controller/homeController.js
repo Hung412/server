@@ -127,7 +127,7 @@ const signin = async (req, res) => {
 
 module.exports = {
     getHomePage,
-    getCount,
+    // getCount,
     getControllPanelPage,
     postDeleteStatus,
     showSigninForm,
