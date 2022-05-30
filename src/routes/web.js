@@ -12,10 +12,10 @@ const initWebRouter = (app) => {
         cookie: { maxAge: 60000 }}));
     router.get('/', homeController.getHomePage);
     router.get('/home', homeController.getHomePage);
-    router.get('/home-data', homeController.postDeleteStatus);
+    router.post('/home-data', homeController.postDeleteStatus);
     // router.get('/home', homeController.getCount);
     router.get('/controll-panel', homeController.getControllPanelPage);
-    router.post('/delete-status', homeController.postDeleteStatus);
+    // router.post('/delete-status', homeController.postDeleteStatus);
     router.get('/sign-in', homeController.showSigninForm);
     router.post('/login', homeController.signin);
     return app.use('/', router);
