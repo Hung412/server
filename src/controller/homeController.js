@@ -40,7 +40,8 @@ const getControllPanelPage = (req, res) => {
 
 const postDeleteStatus = async (req, res) => {
     console.log("Check request: ", req.body);
-    const [rows, fields] = await pool.execute(`SELECT * FROM trangthai WHERE timestatus BETWEEN CURRENT_DATE - 2 AND CURRENT_DATE`)
+    const [rows, fields] = await pool.execute(`SELECT * FROM trangthai WHERE timestatus BETWEEN CURRENT_DATE - 2 AND CURRENT_DATE`);
+    console.log(rows);
     return res.render('homedata.ejs', { data: rows });
 }
 const showSigninForm = async (req, res) => {
