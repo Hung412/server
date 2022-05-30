@@ -53,9 +53,6 @@ ws.on('connection', function (socket, req, res) {
             const face = [];
             for(let i=0; i<rows.length; i++){
                 face.push(rows[i].name);
-                // if(message.length == 22 && rows[i].quyenhan == 0){
-                //     console.log(message);
-                // }
             }
             console.log(face);
             console.log('Message: %s', message);
@@ -75,6 +72,8 @@ ws.on('connection', function (socket, req, res) {
             }
         }
         get_data();
+
+        //insert data
 
         if (message == "open successfully" && temp == 0) {
 
