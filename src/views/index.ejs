@@ -35,21 +35,21 @@
             </tr>
           </thead>
           <tbody>
-            <form action="/home-data" , method="post">
+            <!-- <form action="/delete-status" , method="post">
               <input
                 type="text"
                 hidden
-                value=""
+                value="<%= data[i].id %>"
                 name="statusId"
               />
-              <button type="submit" class="btn-CRUD">Search</button>
-            </form>
+              <button type="submit" class="btn-CRUD">Delete</button>
+            </form> -->
             <% for(let i=0; i < data.length; i++) { %>
               <tr>
                 <td><%= data[i].id %></td>
                 <td><%= data[i].status %></td>
                 <td><%= data[i].timestatus %></td>
-                <!-- <td>
+                <td>
                   <form action="/delete-status" , method="post">
                     <input
                       type="text"
@@ -59,7 +59,7 @@
                     />
                     <button type="submit" class="btn-CRUD">Delete</button>
                   </form>
-                </td> -->
+                </td>
             </tr>
             <% } %>
           </tbody>

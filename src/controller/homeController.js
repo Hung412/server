@@ -40,10 +40,17 @@ const getControllPanelPage = (req, res) => {
 
 const postDeleteStatus = async (req, res) => {
     console.log("Check request: ", req.body);
+    await pool.execute(`DELETE FROM trangthai WHERE id = ${req.body.statusId}`)
+    return res.redirect('/home');
+}
+
+const postHomeData = async (req, res) => {
+    console.log("Check request: ", req.body);
     const [rows, fields] = await pool.execute(`SELECT * FROM trangthai WHERE timestatus BETWEEN CURRENT_DATE - 2 AND CURRENT_DATE`);
     console.log(rows);
     return res.render('homedata.ejs', { data: rows });
 }
+
 const showSigninForm = async (req, res) => {
     res.render('signin.ejs');
 }
@@ -68,7 +75,7 @@ const signin = async (req, res) => {
 
 module.exports = {
     getHomePage,
-    // getCount,
+    postHomeData,
     getControllPanelPage,
     postDeleteStatus,
     showSigninForm,
