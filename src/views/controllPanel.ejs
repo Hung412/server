@@ -206,9 +206,9 @@
         }
       };
       send.onclick = function () {   
-        clock = [getdate.value,gettimeopen.value,gettimeclose.value]
+        clock = [getdate.value,gettimeopen.value,gettimeclose.value,"FACE_RECOGNITION_ON"]
         ws.send(clock);
-        ws.send("FACE_RECOGNITION_ON");
+        // ws.send("FACE_RECOGNITION_ON");
       };
 
       window.onbeforeunload = function() {
