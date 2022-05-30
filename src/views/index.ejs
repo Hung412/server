@@ -25,10 +25,11 @@
         <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
       </div> -->
       <br><br>
-      <div style="text-align: center;">
+      <div class="col-auto my-1" style="text-align: center;">
+        <label class="mr-sm-2" for="inlineFormCustomSelect">Choose time</label>
         <form action="/home-data" , method="post">
           <button type="submit" class="btn-CRUD">Search</button>
-          <select name="search_data">
+          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="search_data">
             <option value="0">1 day</option> 
             <option value="2">3 days</option>
             <option value="6">1 week</option>
