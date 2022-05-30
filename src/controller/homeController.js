@@ -19,7 +19,7 @@ const getHomePage = async(req, res) =>{
         for(let i=0; i<count.length; i++){
             countstatus.push(count[i].countstatus);
         }
-        console.log(countstatus);
+        // console.log(countstatus);
         console.log(req.session.fullname);
         return res.render('index.ejs', {data : count});
     }
