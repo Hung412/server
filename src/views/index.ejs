@@ -70,38 +70,13 @@
     </div>
 
     <script type="text/javascript">
-      const get_count = async() =>{
-        const [count, fields] = await pool.execute('SELECT COUNT(*) AS `countstatus` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
-        const countstatus = [];
-        for(let i=0; i<count.length; i++){
-          countstatus.push(count[i].countstatus);
-        }
-        console.log(countstatus);
-      }
-      var url = "ahkiot.herokuapp.com"; 
-      var ws = new WebSocket("wss://" + url); 
-      var xValues = ["Open", "Close", "Error"];
-      var yValues = [data[0].countstatus, data[1].countstatus, data[2].countstatus];
-      var barColors = ["green", "blue","red"];
-      new Chart("myChart", {
-      type: "bar",
-      data: {
-          labels: xValues,
-          datasets: [{
-          backgroundColor: barColors,
-          data: yValues
-          }]
-      },
-      options: {}
-      });
-
       ws.onopen = function () 
       {
-        get_count();
-        ws.send(JSON.stringify({
-          status: "Connected",
-          pathname: '/home'
-        }));
+        // get_count();
+        // ws.send(JSON.stringify({
+        //   status: "Connected",
+        //   pathname: '/home'
+        // }));
       };
 
       ws.onclose = function () {
