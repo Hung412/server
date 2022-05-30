@@ -19,7 +19,6 @@ const getCount = async(req, res) =>{
         //Chart
         for(let i=0; i<count.length; i++){
             countstatus.push(count[i].countstatus);
-            console.log(countstatus);
         }
         let myChart = document.getElementById('myChart').getContext('2d');
         // Global Options
@@ -80,6 +79,7 @@ const getCount = async(req, res) =>{
         }
         });
         //end chart
+        console.log(countstatus);
         console.log(req.session.fullname);
         return res.render('index.ejs', { data: count });
     }
