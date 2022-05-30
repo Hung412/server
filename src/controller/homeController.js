@@ -21,7 +21,7 @@ const getHomePage = async(req, res) =>{
         }
         console.log(countstatus);
         console.log(req.session.fullname);
-        return res.render('index.ejs', countstatus);
+        return res.render('index.ejs', {data:countstatus});
     }
     else {       
         res.redirect("/sign-in");
