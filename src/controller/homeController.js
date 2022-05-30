@@ -1,32 +1,32 @@
 import pool from '../configs/connectDB';
 
-// const getHomePage = async (req, res) => {
-//     const [rows, fields] = await pool.execute('SELECT * FROM `trangthai` ORDER BY `timestatus` DESC');
-//     // const [count, fields] = await pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
-//     if (req.session.daDangNhap) {
-//         console.log(req.session.fullname);
-//         return res.render('index.ejs', { data: rows });
-//     }
-//     else {       
-//         res.redirect("/sign-in");
-//     }
-// }
-
-const getHomePage = async(req, res) =>{
-    const [count, fields] = await pool.execute('SELECT COUNT(*) AS `countstatus` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
-    const countstatus = [];
+const getHomePage = async (req, res) => {
+    const [rows, fields] = await pool.execute('SELECT * FROM `trangthai` ORDER BY `timestatus` DESC');
+    // const [count, fields] = await pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
     if (req.session.daDangNhap) {
-        for(let i=0; i<count.length; i++){
-            countstatus.push(count[i].countstatus);
-        }
-        // console.log(countstatus);
         console.log(req.session.fullname);
-        return res.redirect('index.ejs');
+        return res.render('index.ejs', { data: rows });
     }
     else {       
         res.redirect("/sign-in");
     }
 }
+
+// const getHomePage = async(req, res) =>{
+//     const [count, fields] = await pool.execute('SELECT COUNT(*) AS `countstatus` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
+//     const countstatus = [];
+//     if (req.session.daDangNhap) {
+//         for(let i=0; i<count.length; i++){
+//             countstatus.push(count[i].countstatus);
+//         }
+//         // console.log(countstatus);
+//         console.log(req.session.fullname);
+//         return res.render('index.ejs', {data : count});
+//     }
+//     else {       
+//         res.redirect("/sign-in");
+//     }
+// }
 
 const getControllPanelPage = (req, res) => {
     if (req.session.daDangNhap){
