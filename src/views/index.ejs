@@ -131,14 +131,13 @@
       }
       ws.onopen = function () 
       {
+        get_count();
         ws.send(JSON.stringify({
           status: "Connected",
           pathname: '/home'
         }));
       };
-
-      get_count();
-
+      
       ws.onclose = function () {
         alert("Server destroyed!");
       };
