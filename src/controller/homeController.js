@@ -15,7 +15,7 @@ const getHomePage = async (req, res) => {
 
 const getControllPanelPage = (req, res) => {
     if (req.session.daDangNhap){
-        console.log(req.session.username);
+        console.log(req.session.fullname);
         return res.render('controllPanel.ejs');
     }
     else {       
@@ -36,10 +36,10 @@ const signin = async (req, res) => {
     console.log(rows);
     var sess = req.session;
     for(let i=0; i<rows.length; i++){
-        // console.log(rows[i].username);
         if(req.body.username == rows[i].username && req.body.password == rows[i].password){
             sess.daDangNhap = true;
             sess.username = req.body.username; 
+            sess.fullname = rows[i].tendaydu;
         }
     }
     if (sess.daDangNhap){
