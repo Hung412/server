@@ -14,14 +14,14 @@ const getHomePage = async (req, res) => {
 
 const getCount = async(req, res) =>{
     const [count, fields] = await pool.execute('SELECT COUNT(*) AS `countstatus` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
-    const countstatus = [];
+    // const countstatus = [];
     if (req.session.daDangNhap) {
         //Chart
-        for(let i=0; i<count.length; i++){
-            countstatus.push(count[i].countstatus);
-        }
+        // for(let i=0; i<count.length; i++){
+        //     countstatus.push(count[i].countstatus);
+        // }
         //end chart
-        console.log(countstatus);
+        console.log(count);
         console.log(req.session.fullname);
         return res.render('index.ejs', { data: count });
     }
