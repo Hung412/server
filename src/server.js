@@ -56,7 +56,7 @@ ws.on('connection', function (socket, req, res) {
             }
             console.log(face);
             console.log('Message: %s', message);
-            if(message=="close successfully" || message=="close error"){
+            if(message=="MANUAL_ON" || message=="close error"){
                 broadcast(socket, "CLOSE CONFIRM");
             }
             for(let i=0; i<face.length; i++){
