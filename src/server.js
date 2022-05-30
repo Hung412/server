@@ -56,7 +56,7 @@ ws.on('connection', function (socket, req, res) {
             }
             console.log(face);
             console.log('Message: %s', message);
-            if(message=="MANUAL_ON" || message=="close error"){
+            if(message=="MANUAL_ON"){
                 broadcast(socket, "CLOSE CONFIRM");
             }
             for(let i=0; i<face.length; i++){
@@ -66,9 +66,9 @@ ws.on('connection', function (socket, req, res) {
                 }else if(rows[i].quyenhan == 1){
                     broadcast(socket, "SUPER_USER");
                 }
-                else{
-                    broadcast(socket, message);
-                }  
+                // else{
+                //     broadcast(socket, message);
+                // }  
             }
         }
         get_data();
