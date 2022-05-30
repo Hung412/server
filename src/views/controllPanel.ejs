@@ -40,8 +40,8 @@
         <div class="wrap-controll-panel-contents">
           <h2>CONTROL PANEL</h2>
           <div style="text-align: center;">
-            <label for="" style="color: green;">Welcome </label>
-            <span style="color: blue;" id="user"></span>
+            <label for="" style="color: green;">Notification </label>
+            <span style="color: blue;" id="user_logged"></span>
             <span style="color: green;" id="timenow"></span>
           </div>
           <div class="button_mode">
@@ -83,21 +83,17 @@
               <label for="">FACE RECOGNITION MODE</label>
             </div>
             <br>
-            <div>
-              <!-- Clock -->
-              <!-- set Calendar -->
-              <div id="setdatetime" hidden="false" name="setdatetime">
-                <label for="date">DATE</label>
-                <input type="date" id="getdate">
-                <br><br>
-                <label for="time">TIME START</label>
-                <input type="time" id="gettimeopen" required>
-                <br><br>
-                <label for="time">TIME END</label>
-                <input type="time" id="gettimeclose" required>
-                <br><br>
-                <input type="button" id="send" name="send" value="Set time"/>
-              </div>
+            <div id="setdatetime" hidden="false" name="setdatetime">
+              <label for="date">DATE</label>
+              <input type="date" id="getdate">
+              <br><br>
+              <label for="time">TIME START</label>
+              <input type="time" id="gettimeopen" required>
+              <br><br>
+              <label for="time">TIME END</label>
+              <input type="time" id="gettimeclose" required>
+              <br><br>
+              <input type="button" id="send" name="send" value="Set time"/>
             </div>
             <br>
             <div class="content-door-status">
@@ -114,7 +110,7 @@
       var manualMode = document.getElementById("manualMode");
       var faceRecognitionMode = document.getElementById("faceRecognitionMode");
       var doorStatus = document.getElementById("door_status");
-      var user = document.getElementById("user");
+      var user_logged = document.getElementById("user_logged");
       var timenow = document.getElementById("timenow");
       var database = document.getElementById("database");
       var gettimeopen = document.getElementById("gettimeopen");
@@ -166,7 +162,7 @@
         } else if (blobToString(e.data) == "VuTuanHung" || (blobToString(e.data) == "DinhVanKhoa") || (blobToString(e.data) == "LeGiaAn")) {
           var today = new Date();
           var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-          user.innerHTML = blobToString(e.data);
+          user_logged.innerHTML = blobToString(e.data);
           timenow.innerHTML = time;
         }
       };
@@ -197,12 +193,6 @@
           setdatetime.hidden = true;
         }
       };
-      // faceRecognitionMode.onclick = function () {
-      //   if (Boolean(getdate.value) == false || Boolean(gettimeopen.value) == false || Boolean(gettimeclose.value) == false) {
-      //     alert("Please set datetime");
-      //     faceRecognitionMode.disabled = true;
-      //   } 
-      // }
       faceRecognitionMode.onchange = function () {
         if(faceRecognitionMode.checked == true) {
           manualMode.disabled = true;
@@ -219,7 +209,6 @@
         clock = [getdate.value,gettimeopen.value,gettimeclose.value]
         ws.send(clock);
         ws.send("FACE_RECOGNITION_ON");
-        // ws.send("close: " + gettimeclose.value);
       };
 
       window.onbeforeunload = function() {
