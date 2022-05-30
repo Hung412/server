@@ -66,9 +66,9 @@ ws.on('connection', function (socket, req, res) {
                 }else if(rows[i].quyenhan == 1){
                     broadcast(socket, "SUPER_USER");
                 }
-                // else{
-                //     broadcast(socket, message);
-                // }  
+                else if(message != face[i]){
+                    broadcast(socket, message);
+                }  
             }
         }
         get_data();
