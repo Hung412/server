@@ -38,11 +38,11 @@ const getControllPanelPage = (req, res) => {
     }
 }
 
-// const postDeleteStatus = async (req, res) => {
-//     console.log("Check request: ", req.body);
-//     await pool.execute(`DELETE FROM trangthai WHERE id = ${req.body.statusId}`)
-//     return res.redirect('/home');
-// }
+const postDeleteStatus = async (req, res) => {
+    console.log("Check request: ", req.body);
+    await pool.execute(`DELETE FROM trangthai WHERE id = ${req.body.statusId}`)
+    return res.redirect('/home');
+}
 
 const postHomeData = async (req, res) => {
     console.log("Check request: ", req.body);
@@ -77,7 +77,7 @@ module.exports = {
     getHomePage,
     postHomeData,
     getControllPanelPage,
-    // postDeleteStatus,
+    postDeleteStatus,
     showSigninForm,
     signin
 }
