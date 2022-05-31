@@ -35,15 +35,18 @@
             </tr>
           </thead>
           <tbody>
-            <form action="/home-data" , method="post">
-              <select name="search_data">
-                <option value="0">1 day</option> 
-                <option value="2">3 days</option>
-                <option value="6">1 week</option>
-                <option value="30">1 month</option>
-              </select>
-              <button type="submit" class="btn-CRUD">Search</button>
-            </form>
+            <div class="col-auto my-1" style="text-align: center; width:20%;">
+              <label class="mr-sm-2" for="inlineFormCustomSelect">Choose time</label>
+              <form action="/home-data" , method="post">
+                <button type="submit" class="btn-CRUD">Search</button>
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="search_data">
+                  <option value="0">1 day</option> 
+                  <option value="2">3 days</option>
+                  <option value="6">1 week</option>
+                  <option value="30">1 month</option>
+                </select>
+              </form>
+            </div>
             <% for(let i=0; i < data.length; i++) { %>
               <tr>
                 <td><%= data[i].id %></td>
