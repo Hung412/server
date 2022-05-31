@@ -82,13 +82,13 @@ ws.on('connection', function (socket, req, res) {
             tempError = 1;
 
         }
-        else if (message == "close successfully" && temp == 1) {
+        else if (message == "MANUAL_ON" && temp == 1) {
 
             pool.execute("INSERT INTO trangthai (status) VALUES ('close')");
             temp = 0;
             tempError = 1; 
         }
-        else if ((message == "open error" || message == "close error") && tempError == 1) {
+        else if ((message == "MANUAL_ON" || message == "close error") && tempError == 1) {
 
             pool.execute("INSERT INTO trangthai (status) VALUES ('error')"); 
 
