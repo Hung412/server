@@ -63,7 +63,7 @@ ws.on('connection', function (socket, req, res) {
                 if(message == face[i]){
                     console.log('Recognition: %s', message);
                     broadcast(socket, "FACE_RECOGNITION_CONFIRM");
-                }else if(rows[i].quyenhan == 1){
+                }else if(message == face[i] && rows[i].quyenhan == 1){
                     broadcast(socket, "SUPER_USER");
                 }
                 else if(message != face[i]){
@@ -75,7 +75,7 @@ ws.on('connection', function (socket, req, res) {
 
         //insert data
 
-        if (message == "MANUAL_ON" && temp == 0) {
+        if (message == "open successfully" && temp == 0) {
 
             pool.execute("INSERT INTO trangthai (status) VALUES ('open')");
             temp = 1;
