@@ -77,20 +77,20 @@ ws.on('connection', function (socket, req, res) {
 
         if (message == "open successfully" && temp == 0) {
 
-            pool.execute("INSERT INTO trangthai (status) VALUES ('open')");
+            pool.execute("INSERT INTO trangthai (status,timestatus) VALUES ('open',CURRENT_TIMESTAMP)");
             temp = 1;
             tempError = 1;
 
         }
         else if (message == "close successfully" && temp == 1) {
 
-            pool.execute("INSERT INTO trangthai (status) VALUES ('close')");
+            pool.execute("INSERT INTO trangthai (status,timestatus) VALUES ('close',CURRENT_TIMESTAMP)");
             temp = 0;
             tempError = 1; 
         }
         else if ((message == "open error" || message == "close error") && tempError == 1) {
 
-            pool.execute("INSERT INTO trangthai (status) VALUES ('error')"); 
+            pool.execute("INSERT INTO trangthai (status,timestatus) VALUES ('error',CURRENT_TIMESTAMP)"); 
 
             tempError = 0;
         }
