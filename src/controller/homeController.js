@@ -39,16 +39,20 @@ const getControllPanelPage = (req, res) => {
 }
 
 const postDeleteStatus = async (req, res) => {
-    console.log("Check request: ", req.body);
+    // console.log("Check request: ", req.body);
     await pool.execute(`DELETE FROM trangthai WHERE id = ${req.body.statusId}`)
     return res.redirect('/home');
 }
 
 const postHomeData = async (req, res) => {
-    console.log("Check request: ", req.body);
+    // console.log("Check request: ", req.body);
     const [rows, fields] = await pool.execute(`SELECT * FROM trangthai WHERE timestatus BETWEEN '${req.body.date_start}' AND DATE_ADD('${req.body.date_end}', INTERVAL 1 DAY)`);
-    console.log(rows);
-    return res.render('homedata.ejs', { data: rows });
+    // console.log(rows);
+    if (req.session.daDangNhap){
+        return res.render('homedata.ejs', { data: rows });
+    }else {       
+        res.redirect("/sign-in");
+    }
 }
 
 const showSigninForm = async (req, res) => {
