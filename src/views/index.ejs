@@ -24,11 +24,13 @@
       <br><br>
       <div class="col-auto my-1" style="text-align: center;">
         <form action="/home-data" , method="post">
+          <div>
+            <input type="date" name="date_start">
+            <br>
+            <input type="date" name="date_end">
+          </div>
           <label for="date_start">From</label>
-          <input type="date" name="date_start">
-          <br>
           <label for="date_end">to</label>
-          <input type="date" name="date_end">
           <br><br>
           <button type="submit" class="btn-CRUD">Search</button>
         </form>
