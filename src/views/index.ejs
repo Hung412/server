@@ -15,15 +15,11 @@
   </head>
   <body>
     <div class="w3-navbar">
-      <a class="active" href="/home"><i class="fa fa-fw fa-home"></i>Home</a></a>
-      <a href="/controll-panel"><i class="fa fa-fw fa-wrench"></i>Controll panel</a>
+      <a href="/home"><i class="fa fa-fw fa-home"></i>Home</a></a>
+      <a class="active" href="/controll-panel"><i class="fa fa-fw fa-wrench"></i>Controll panel</a>
       <a href="/sign-in"><i class="fa fa-fw fa-bar-chart"></i>Sign in</a>
     </div>
     <div class="w3-container">
-      <!-- <h2>Status table</h2>
-      <div class="container">
-        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-      </div> -->
       <br><br>
       <div class="col-auto my-1" style="text-align: center;">
         <form action="/home-data" , method="post">
@@ -31,6 +27,7 @@
           <input type="date" name="date_start">
           <label for="date_end">to</label>
           <input type="date" name="date_end">
+          <br><br>
           <button type="submit" class="btn-CRUD">Search</button>
         </form>
       </div>
