@@ -46,7 +46,7 @@ const postDeleteStatus = async (req, res) => {
 
 const postHomeData = async (req, res) => {
     console.log("Check request: ", req.body);
-    const [rows, fields] = await pool.execute(`SELECT * FROM trangthai WHERE timestatus BETWEEN '${req.body.date_start}' AND '${req.body.date_end}'`);
+    const [rows, fields] = await pool.execute(`SELECT * FROM trangthai WHERE timestatus BETWEEN '${req.body.date_start}' AND '${req.body.date_end}'+1`);
     console.log(rows);
     return res.render('homedata.ejs', { data: rows });
 }
