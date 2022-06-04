@@ -50,7 +50,7 @@
               <tr>
                 <td><%= data[i].id %></td>
                 <td><%= data[i].status %></td>
-                <td><%= data[i].timestatus.toLocaleString({timeZone: "Asia/Ho_Chi_Minh"}) %></td>
+                <td><%= data[i].timestatus.toLocaleString("vi-VN", {timeZone: "Asia/Ho_Chi_Minh"}) %></td>
                 <td>
                   <form action="/delete-status" , method="post">
                     <input
