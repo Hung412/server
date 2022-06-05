@@ -35,14 +35,16 @@
           </thead>
           <tbody>
             <br><br>
-            <div class="col-auto my-1" style="text-align: center;">
+            <div class="container" style="text-align: center;">
               <form action="/home-data" , method="post">
-                <label for="date_start">From</label>
-                <input type="date" name="date_start">
+                <div class="row">
+                  <div class="col"><label for="date_start">From</label></div>
+                  <div class="col"><input type="date" name="date_start"></label></div>  
+                  <div class="w-100"></div>
+                  <div class="col"><label for="date_end">to</label></div>
+                  <div class="col"><input type="date" name="date_end"></label></div>  
+                </div>
                 <br>
-                <label for="date_end">to</label>
-                <input type="date" name="date_end">
-                <br><br>
                 <button type="submit" class="btn-CRUD">Search</button>
               </form>
             </div>
