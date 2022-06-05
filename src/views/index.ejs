@@ -33,15 +33,17 @@
         </form>
       </div> -->
       <div class="container" style="text-align: center;">
-        <div class="row">
-          <div class="col"><label for="date_start">From</label></div>
-          <div class="col"><input type="date" name="date_start"></label></div>  
-          <div class="w-100"></div>
-          <div class="col"><label for="date_end">to</label></div>
-          <div class="col"><input type="date" name="date_end"></label></div>  
-        </div>
-        <br>
-        <button type="submit" class="btn-CRUD">Search</button>
+        <form action="/home-data" , method="post">
+          <div class="row">
+            <div class="col"><label for="date_start">From</label></div>
+            <div class="col"><input type="date" name="date_start"></label></div>  
+            <div class="w-100"></div>
+            <div class="col"><label for="date_end">to</label></div>
+            <div class="col"><input type="date" name="date_end"></label></div>  
+          </div>
+          <br>
+          <button type="submit" class="btn-CRUD">Search</button>
+        </form>
       </div>
       <br><br>
       <div>
