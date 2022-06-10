@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <script src='/js/clock.js'></script>
+    <title>User Management</title>
+  </head>
+  <body>
+    <div class="w3-navbar">
+        <div class="clock">
+            <div class="bg">
+                <h2 id="h">12</h2>
+            </div>
+            <h2>:</h2>
+            <div class="bg">
+                <h2 id="m">20</h2>
+            </div>
+            <h2>:</h2>
+            <div class="bg">
+                <h2 id="s">00</h2>
+            </div>
+            <div class="bg">
+                <h2 id="ap">AM</h2>
+            </div>
+        </div>
+        <a class="active" href="/home"><i class="fa fa-fw fa-home"></i>Home</a></a>
+        <a href="/controll-panel"><i class="fa fa-fw fa-wrench"></i>Controll panel</a>
+        <a href="/sign-in"><i class="fa fa-fw fa-bar-chart"></i>Sign in</a>
+        <a href="/user"><i class="fa fa-fw fa-bar-chart"></i>Profile</a>
+    </div>
+    <div class="w3-container">
+      <div>
+        <table class="w3-table-all w3-hoverable">
+          <thead>
+            <tr class="w3-light-gray">
+              <th>ID</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Fullname</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=0; i < data.length; i++) { %>
+              <tr>
+                <td><%= data[i].id %></td>
+                <td><%= data[i].username %></td>
+                <td><%= data[i].password %></td>
+                <td><%= data[i].tendaydu %></td>
+                <td>
+                    <form action="/edit-user" , method="post">
+                        <input
+                          type="text"
+                          hidden
+                          value="<%= data[i].id %>"
+                          name="statusId"
+                        />
+                        <input type="text" id="form3Example1c" class="form-control" name="username" value="Change Username"/>
+                        <input type="password" id="form3Example4c" class="form-control" name="password" value="Change Password" />
+                        <input type="text" id="form3Example1c" class="form-control" name="fullname" value="Change Yourname"/>
+                        <button type="submit" class="btn-CRUD">Change</button>
+                        <button type="submit" class="btn-CRUD">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+          </tbody>
+    </div>
+  </body>
+</html>

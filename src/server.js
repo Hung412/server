@@ -5,6 +5,9 @@ import configViewEngine from './configs/viewEngine';
 import initWebRouter from './routes/web';
 import pool from './configs/connectDB';
 
+const passport = require('passport');
+const passportfb = require('passport-facebook').Strategy;
+const session = require('express-session');
 require('dotenv').config();
 const PORT = process.env.PORT || 3000
 var temp = 0;
@@ -16,6 +19,49 @@ const server = http.createServer(app);
 const ws = new WebSocket.Server({
     server
 });
+
+app.use(session({
+    secret: "hung"
+}))
+app.use(passport.initialize());
+app.use(passport.session());
+// app.get('/auth/fb', passport.authenticate('facebook'));
+// app.get('/auth/fb/cb', passport.authenticate('facebook',{
+//     successRedirect: '/controll-panel'
+// }) );
+
+passport.use(new passportfb(
+    {
+        clientID: "1837310443125273",
+        clientSecret: "e1b7da8d3c2dbbc363bbc6c629f50884",
+        callbackURL: "https://ahkiot.herokuapp.com/auth/fb/cb",
+    },
+    (accessToken, refreshToken, profile, done) => {
+        console.log(profile);
+        const [rows, fields] = pool.execute(`SELECT id FROM user`);
+        console.log(rows);
+        for(let i=0; i<rows.length; i++){
+            if(rows[i] == profile._json.id ){
+                done(null,user)
+            }else{
+                pool.execute(`INSERT INTO user (id,username,tendaydu) VALUES (${profile._json.id},'${profile._json.name}','${profile._json.name}')`);
+            }
+        } 
+    }
+))
+
+passport.serializeUser((user, done) => {
+    done(null, user.id)
+})
+
+passport.deserializeUser((id, done) => {
+    const [rows, fields] = pool.execute(`SELECT id FROM user`);
+    for(let i=0; i<rows.length; i++){
+        if(rows[i] == id ){
+            done(null,user)
+        }
+    } 
+})
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -54,17 +100,15 @@ ws.on('connection', function (socket, req, res) {
             for(let i=0; i<rows.length; i++){
                 face.push(rows[i].name);
             }
-            console.log(face);
-            console.log('Message: %s', message);
-            if(message=="MANUAL_ON"){
-                broadcast(socket, "CLOSE CONFIRM");
-            }
+            // console.log('Message: %s', message);
             for(let i=0; i<face.length; i++){
-                if(message == face[i]){
-                    console.log('Recognition: %s', message);
-                    broadcast(socket, "FACE_RECOGNITION_CONFIRM");
-                }else if(message == face[i] && rows[i].quyenhan == 1){
-                    broadcast(socket, "SUPER_USER");
+                if(String(message).split("-")[1] == face[i]){
+                    console.log('Recognition: %s', String(message).split("-")[0]);
+                    console.log('Message: %s', message);
+                    broadcast(socket, message);
+                }else if(String(message).split("-")[1] == face[i] && rows[i].quyenhan == 1){
+                    console.log('Message: %s', "SUPER_USER-"+message);
+                    broadcast(socket, "SUPER_USER-"+message);
                 }
                 else if(message != face[i]){
                     broadcast(socket, message);
@@ -108,9 +152,3 @@ ws.on('connection', function (socket, req, res) {
     });
 });
 server.listen(PORT, console.log(`Server listening on http://localhost:${PORT}`));
-
-
-
-
-
-
