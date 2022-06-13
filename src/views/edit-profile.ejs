@@ -32,7 +32,6 @@
         <a href="/controll-panel"><i class="fa fa-fw fa-wrench"></i>Controll panel</a>
         <a href="/sign-in"><i class="fa fa-fw fa-bar-chart"></i>Sign in</a>
         <a class="active" href="/user"><i class="fa fa-fw fa-bar-chart"></i>Profile</a>
-        <a href="/user-management"><i class="fa fa-fw fa-bar-chart"></i>Users Management</a>
     </div>
   
     <div class="container">
@@ -42,21 +41,20 @@
       <% for(let i=0; i < data.length; i++) { %>
         <div>
           <div class="profile-name"><%= data[i].tendaydu %></div>
-          <p class="about">ID: <%= data[i].id %> <br> Username: <%= data[i].username %> <br> Email: <%= data[i].email %> <br> Gender: <%= data[i].gender %> <br> Age: <%= data[i].age %> <br> <br>
-          <a href="/edit-profile"><button id="change" class="msg-btn">Change</button>  </a>
-            <!-- <form action="/edit-user" , method="post">
+          <p class="about">ID: <%= data[i].id %> <br> Username: <%= data[i].username %> <br> Email: <%= data[i].email %> <br> Gender: <%= data[i].gender %> <br> Age: <%= data[i].age %>
+            <form action="/edit-user" , method="post">
               <input
                 type="text"
                 hidden
                 value="<%= data[i].id %>"
                 name="statusId"
               />
-              <input type="text" id="form3Example1c" class="form-control" name="username" value="New Username"/>
-              <input type="password" id="form3Example4c" class="form-control" name="password" value="New Password" />
-              <input type="text" id="form3Example1c" class="form-control" name="fullname" value="Change Yourname"/> <br> <br>
-              <button id="change" class="msg-btn">Change</button>
-              <button type="submit" class="follow-btn">Delete</button>
-            </form> -->
+              <input type="text" id="form3Example1c" class="about" name="username" placeholder="New username"/> <br> <br>
+              <input type="password" id="form3Example4c" class="about" name="password" placeholder="New password" /> <br> <br>
+              <input type="text" id="form3Example1c" class="about" name="fullname" placeholder="Change display name"/> <br> <br>
+              <button id="change" class="msg-btn">Confirm</button>
+              <!-- <button type="submit" class="follow-btn">Delete</button> -->
+            </form>
           <div>
             <i class="fab fa-facebook-f"></i>
             <i class="fab fa-instagram"></i>

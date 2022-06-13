@@ -15,10 +15,18 @@ const getHomePage = async (req, res) => {
     }
 }
 
-const getControllPanelPage = (req, res) => {
+const getEditProfile = async (req, res) => {
+    const [rows, fields] = await pool.execute(`SELECT * FROM user WHERE username = '${req.session.username}'`);
+        return res.render('edit-profile.ejs', { data: rows });
+}
+
+const getControllPanelPage = async (req, res) => {
+    const [rows, fields] = await pool.execute('SELECT * FROM `trangthai` ORDER BY `timestatus` DESC');
+    const [rows1 ,fields1] = await pool.execute(`SELECT * FROM user WHERE username ='${req.session.username}'`);
     if (req.session.daDangNhap){
         console.log(req.session.fullname);
-        return res.render('controllPanel.ejs');
+        console.log(rows1);
+        return res.render('controllPanel.ejs',{ data: rows, data1: rows1 });
     }
     else {       
         res.redirect("/sign-in");
@@ -32,27 +40,38 @@ const postDeleteStatus = async (req, res) => {
 }
 
 const editUser = async (req, res) => {
-    // console.log("Check request: ", req.body);
-    await pool.execute(`UPDATE user SET username = '${req.body.username}',tendaydu = '${req.body.fullname}',password='${req.body.password}' WHERE username = '${req.session.username}'`)
-    return res.redirect('/user');
-}
-
-const users = async (req, res) => {
-    
     if (req.session.daDangNhap){
-        const [rows, fields] = await pool.execute(`SELECT * FROM user WHERE username = '${req.session.username}'`);
-        return res.render('users.ejs', { data: rows });
+        await pool.execute(`UPDATE user SET username = '${req.body.username}',tendaydu = '${req.body.fullname}',password='${req.body.password}' WHERE username = '${req.session.username}'`)
+        return res.redirect('/sign-in');
     }
     else {       
         res.redirect("/sign-in");
     }
 }
 
+const users = async (req, res) => {
+        const [rows, fields] = await pool.execute(`SELECT * FROM user WHERE username = '${req.session.username}'`);
+        return res.render('users.ejs', { data: rows });
+}
+
+const userManagement = async (req, res) => {
+    const [rows, fields] = await pool.execute(`SELECT * FROM user`);
+    for(let i=0; i<rows.length; i++){
+        if(rows[i].permission == 1){
+            return res.render('user-management.ejs', { data: rows });
+        }
+        else{
+            return res.render('users.ejs', { data: rows });
+        }
+    }
+}
+
 const postHomeData = async (req, res) => {
     // console.log("Check request: ", req.body);
     const [rows, fields] = await pool.execute(`SELECT * FROM trangthai WHERE timestatus BETWEEN '${req.body.date_start}' AND DATE_ADD('${req.body.date_end}', INTERVAL 1 DAY)`);
+    const [rows1 ,fields1] = await pool.execute(`SELECT * FROM user WHERE username ='${req.session.username}'`);
     if (req.session.daDangNhap){
-        return res.render('homedata.ejs', { data: rows });
+        return res.render('homedata.ejs', { data: rows, data1: rows1 });
     }else {       
         res.redirect("/sign-in");
     }
@@ -99,5 +118,7 @@ module.exports = {
     showRegisterForm,
     register,
     users,
-    editUser
+    editUser,
+    getEditProfile,
+    userManagement
 }

@@ -25,10 +25,13 @@ app.use(session({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
-// app.get('/auth/fb', passport.authenticate('facebook'));
-// app.get('/auth/fb/cb', passport.authenticate('facebook',{
-//     successRedirect: '/controll-panel'
-// }) );
+app.get('/auth/fb', passport.authenticate('facebook'));
+app.get('/auth/fb/cb', passport.authenticate('facebook',{
+    successRedirect: '/user', failureRedirect: '/sign-in'
+}),function(req,res){
+    res.redirect('/controll-panel');
+    }
+);
 
 passport.use(new passportfb(
     {
@@ -37,30 +40,42 @@ passport.use(new passportfb(
         callbackURL: "https://ahkiot.herokuapp.com/auth/fb/cb",
     },
     (accessToken, refreshToken, profile, done) => {
-        console.log(profile);
-        const [rows, fields] = pool.execute(`SELECT id FROM user`);
-        console.log(rows);
-        for(let i=0; i<rows.length; i++){
-            if(rows[i] == profile._json.id ){
-                done(null,user)
-            }else{
-                pool.execute(`INSERT INTO user (id,username,tendaydu) VALUES (${profile._json.id},'${profile._json.name}','${profile._json.name}')`);
-            }
-        } 
+        // console.log(profile);
+        // const check_fb = async(req,res) =>{
+        //     const [rows, fields] = await pool.execute("SELECT id FROM user");
+        //     console.log(rows);
+        //     for(let i=0; i<rows.length; i++){
+        //         if(profile._json.id == rows[i].id){
+        //             done(null,profile._json);
+        //         }
+        //     } 
+        // }
+        // check_fb();
+        process.nextTick(function () {
+            console.log(accessToken, refreshToken, profile, done);
+            const check_fb = async() =>{
+                    const [rows, fields] = await pool.execute("SELECT id FROM user");
+                    console.log(rows);
+                    for(let i=0; i<rows.length; i++){
+                        if(profile._json.id == rows[i].id){
+                            // done(null,profile._json);
+                            return done(null, profile);
+                        }
+                    } 
+                }
+                check_fb();
+        });
     }
-))
+));
 
 passport.serializeUser((user, done) => {
-    done(null, user.id)
+    done(null, user.name);
+    console.log(user);
 })
 
-passport.deserializeUser((id, done) => {
-    const [rows, fields] = pool.execute(`SELECT id FROM user`);
-    for(let i=0; i<rows.length; i++){
-        if(rows[i] == id ){
-            done(null,user)
-        }
-    } 
+passport.deserializeUser((obj, done) => {   
+    done(null, obj); 
+    console.log(obj);
 })
 
 app.use(express.urlencoded({ extended: true }));
@@ -93,14 +108,14 @@ function broadcast(socket, data) {
 ws.on('connection', function (socket, req, res) {
     clients.push(socket);
     socket.on('message', function (message) {
-        console.log(message.length);
+        broadcast(socket, message);
         const get_data = async() =>{
-            const [rows, fields]  = await pool.execute(`SELECT * FROM nguoidung`);
+            const [rows, fields] = await pool.execute(`SELECT * FROM nguoidung`);
             const face = [];
             for(let i=0; i<rows.length; i++){
                 face.push(rows[i].name);
             }
-            // console.log('Message: %s', message);
+            console.log('Message: %s', message);
             for(let i=0; i<face.length; i++){
                 if(String(message).split("-")[1] == face[i]){
                     console.log('Recognition: %s', String(message).split("-")[0]);
@@ -110,9 +125,6 @@ ws.on('connection', function (socket, req, res) {
                     console.log('Message: %s', "SUPER_USER-"+message);
                     broadcast(socket, "SUPER_USER-"+message);
                 }
-                else if(message != face[i]){
-                    broadcast(socket, message);
-                }  
             }
         }
         get_data();
