@@ -8,7 +8,7 @@ const getHomePage = async (req, res) => {
     // const [count, fields] = await pool.execute('SELECT COUNT(*) AS `count` FROM `trangthai` WHERE status = "open" UNION SELECT COUNT(*) AS `countclose` FROM `trangthai` WHERE status = "close" UNION SELECT COUNT(*) AS `counterror` FROM `trangthai` WHERE status = "error"');
     if (req.session.daDangNhap) {
         console.log(req.session.fullname);
-        return res.render('controllPanel.ejs', { data: rows });
+        return res.render('index.ejs', { data: rows });
     }
     else {       
         res.redirect("/sign-in");
